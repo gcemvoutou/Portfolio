@@ -6,8 +6,9 @@ const PROJECTS_FALLBACK = [
     "id": 1,
     "titre": "Active Directory Lab",
     "categorie": "système",
+    "contexte": "perso",
     "description": "Déploiement complet d'un domaine Windows Server 2022 en lab virtuel. Création d'une arborescence d'UOs, configuration DNS/DHCP, mise en place de GPOs, scripts PowerShell d'automatisation et profils itinérants.",
-    "description_detaillee": "Ce projet de laboratoire m'a permis d'acquérir une compréhension approfondie de l'administration d'un parc informatique d'entreprise sous Windows Server 2022.\n\n- Installation et configuration des services Active Directory Domain Services (AD DS).\n- Gestion des configurations DNS et DHCP (plages d'adresses, réservations, exclusions).\n- Conception d'une arborescence d'Unités d'Organisation (UO) cohérente.\n- Application de stratégies de groupe (GPOs) pour : \n  - Fond d'écran d'entreprise,\n  - Restrictions d'accès au panneau de configuration,\n  - Déploiement automatique de logiciels (.msi),\n  - Redirection de dossiers utilisateurs.\n- Développement de scripts PowerShell pour l'importation massive de comptes utilisateurs depuis un fichier CSV.",
+    "description_detaillee": "Ce projet de laboratoire m'a permis d'acquérir une compréhension approfondie de l'administration d'un parc informatique d'entreprise sous Windows Server 2022.\n\n- Déployer un contrôleur de domaine Active Directory (AD DS) et son service DNS\n- Structurer un annuaire avec des unités d'organisation (OU) et des groupes de sécurité selon le modèle AGDLP\n- Créer et administrer des comptes utilisateurs (manuellement et via PowerShell)\n- Joindre un poste client Windows 10 au domaine\n- Déployer des stratégies de groupe (GPO) : fond d'écran, restrictions, lecteur réseau\n- Configurer des profils itinérants et des répertoires personnels (lecteurs réseau)",
     "technologies": ["Windows Server 2022", "Active Directory", "PowerShell", "VMware Workstation Pro", "DNS", "DHCP", "GPO"],
     "image": "assets/active-directory.png",
     "lien": "https://github.com/gcemvoutou/lab-active-directory-sisr",
@@ -18,6 +19,7 @@ const PROJECTS_FALLBACK = [
     "id": 2,
     "titre": "BookStack sur Raspberry Pi",
     "categorie": "infrastructure",
+    "contexte": "perso",
     "description": "Déploiement d'un wiki auto-hébergé sur Raspberry Pi 4 avec Docker Compose. Stack : BookStack + MariaDB + Nginx Proxy Manager + Let's Encrypt SSL. Accessible via bookstack-clara.duckdns.org.",
     "description_detaillee": "Mise en place d'une plateforme de base de connaissances (Wiki) personnelle pour centraliser mes documentations et procédures techniques.\n\nCe projet d'infrastructure comprend :\n\n- Le déploiement de la stack BookStack, MariaDB, et Nginx Proxy Manager via Docker Compose.\n\n- La configuration de Nginx Proxy Manager en tant que Reverse Proxy pour sécuriser les échanges avec un certificat SSL Let's Encrypt gratuit.\n\n- L'attribution d'un nom de domaine gratuit via le service de DNS dynamique DuckDNS.\n\n- La redirection sécurisée des ports (port forwarding) sur une box Bouygues Telecom.\n\n- La résolution d'erreurs d'initialisation de base de données (MariaDB troubleshooting) et la migration de la configuration depuis un Raspberry Pi de l'école vers un Raspberry Pi personnel en utilisant des commandes sécurisées SCP.",
     "technologies": ["Docker", "Docker Compose", "Nginx Proxy Manager", "MariaDB", "Let's Encrypt", "DuckDNS", "Raspberry Pi"],
@@ -30,6 +32,7 @@ const PROJECTS_FALLBACK = [
     "id": 3,
     "titre": "TP_Parefeu_OPNsense",
     "categorie": "réseau",
+    "contexte": "scolaire",
     "description": "Installation et configuration complète d'un pare-feu OPNsense sur appliance Riverbed. Inclut la préparation (Rufus, console), l'installation (ZFS), et la sécurisation avancée (HTTPS, filtrage, NAT).",
     "description_detaillee": "Ce projet pratique consistait à transformer une appliance réseau Riverbed en un pare-feu opérationnel via la distribution open-source OPNsense.\n\nLe projet s'est articulé autour de deux volets :\n\n- **Volet 1 : Installation et configuration initiale**\n  - Préparation d'une clé USB bootable.\n  - Accès console (PuTTY, 115200 bauds).\n  - Installation du système (ZFS, GPT/UEFI).\n  - Assignation des interfaces WAN (DHCP) et LAN (statique 192.168.6.254/24).\n\n- **Volet 2 : Sécurisation et configuration avancée**\n  - Sécurisation de l'accès à l'interface d'administration via HTTPS (certificat auto-signé).\n  - Mise en place des règles de filtrage (Firewall Rules) pour autoriser le trafic LAN vers WAN.\n  - Configuration du NAT sortant (Outbound NAT) pour permettre l'accès à internet.\n  - Vérification du trafic via les logs en temps réel (Live View).",
     "technologies": ["OPNsense", "FreeBSD", "Riverbed", "PuTTY", "Rufus", "HTTPS", "NAT"],
@@ -39,9 +42,23 @@ const PROJECTS_FALLBACK = [
     "statut_type": "termine"
   },
   {
+    "id": 6,
+    "titre": "Supervision réseau avec CheckMK",
+    "categorie": "réseau",
+    "contexte": "entreprise",
+    "description": "Supervision d'une infrastructure hétérogène de 204 hôtes répartis sur les sites distants de la Mairie de Saint-Égrève avec CheckMK Raw Edition (CRE).",
+    "description_detaillee": "CheckMK Raw Edition (CRE) est une solution de supervision réseau open source. Dans le cadre de mon alternance à la Mairie de Saint-Égrève, j'ai été chargée de centraliser et piloter la supervision d'une infrastructure hétérogène répartie sur de nombreux sites distants (Hôtel de Ville, écoles, gymnases, services techniques) afin de :\n\n- Garantir la continuité du service public\n- Anticiper les pannes matérielles ou réseau\n- Fiabiliser l'inventaire des équipements supervisés\n\nÀ ce jour, 204 hôtes sont enregistrés dans la solution, un chiffre amené à évoluer au fil des mises en production et des retraits de matériel.",
+    "technologies": ["CheckMK", "CRE", "Linux", "Supervision", "Réseau"],
+    "image": "assets/Checkmk.png",
+    "lien": "https://github.com/gcemvoutou/Checkmk-supervision-mairie",
+    "statut": "Terminé — documenté",
+    "statut_type": "termine"
+  },
+  {
     "id": 4,
     "titre": "Portfolio Web (ce site)",
     "categorie": "dev",
+    "contexte": "perso",
     "description": "Portfolio professionnel statique inspiré de la charte graphique de Netflix (noir et bleu). Développé en HTML/CSS/JS et propulsé par Gemini CLI.",
     "description_detaillee": "Conception et développement de mon site vitrine personnel. Pour donner une touche résolument informatique et orientée technologie, j'ai revisité la charte graphique de Netflix en remplaçant la couleur rouge emblématique par un bleu électrique percutant.\n\nFonctionnalités clés :\n- Interface moderne 100% responsive avec animations fluides.\n- Menu de navigation dynamique (changement d'opacité au défilement).\n- Chargement asynchrone des projets à partir d'un fichier JSON local.\n- Filtrage dynamique des projets sans rechargement de page (via JavaScript).\n- Système de modale de détails ('More Info') inspiré de Netflix pour chaque projet.\n- Formulaire de contact sécurisé connecté à FormSubmit pour recevoir directement les messages par e-mail.\n- Hébergement et déploiement continu sur Netlify.",
     "technologies": ["HTML", "CSS", "JavaScript", "JSON", "Gemini CLI", "Netlify"],
@@ -53,6 +70,7 @@ const PROJECTS_FALLBACK = [
     "id": 5,
     "titre": "Pi-hole",
     "categorie": "réseau",
+    "contexte": "perso",
     "description": "Installation d'un serveur DNS avec filtrage publicitaire sur Raspberry Pi. Mode DNS uniquement (sans prise en charge du DHCP). Projet planifié.",
     "description_detaillee": "Projet à venir visant à améliorer la sécurité et la vitesse de navigation au sein de mon réseau domestique en déployant un serveur de blocage de publicité et de traceurs réseau au niveau DNS (trou noir DNS).\n\nL'objectif sera de :\n- Installer Pi-hole sur un Raspberry Pi.\n- Configurer le serveur DNS local de manière autonome sans activer le serveur DHCP de Pi-hole (pour conserver le DHCP existant de la box).\n- Créer des listes de blocage personnalisées (adlists) pour filtrer les publicités et les sites malveillants à la source pour l'ensemble des appareils connectés.",
     "technologies": ["Pi-hole", "Raspberry Pi", "DNS"],
@@ -186,6 +204,18 @@ function renderProjects(projectsToRender) {
     if (project.categorie === 'réseau') categoryIcon = 'fa-shield-halved';
     if (project.categorie === 'dev') categoryIcon = 'fa-code';
     
+    // Déterminer la classe CSS selon le contexte
+    let contextBadgeClass = 'status-badge ';
+    if (project.contexte === 'perso') {
+      contextBadgeClass += 'badge-perso';
+    } else if (project.contexte === 'entreprise') {
+      contextBadgeClass += 'badge-entreprise';
+    } else if (project.contexte === 'scolaire') {
+      contextBadgeClass += 'badge-scolaire';
+    } else {
+      contextBadgeClass += 'badge-gray';
+    }
+    
     let cardThumbnailContent = `<i class="fa-solid ${categoryIcon}"></i>`;
     let cardTitleContent = `<div class="card-title-fallback">${project.titre}</div>`;
     if (project.image) {
@@ -216,7 +246,7 @@ function renderProjects(projectsToRender) {
         </div>
         <h4 class="project-title">${project.titre}</h4>
         <div class="project-meta">
-          <span class="${badgeClass}">${project.statut}</span>
+          <span class="${contextBadgeClass}">${project.contexte}</span>
           <span class="project-category">${project.categorie.toUpperCase()}</span>
         </div>
         <p class="project-excerpt">${project.description}</p>
@@ -274,9 +304,37 @@ function openProjectModal(id) {
     modalStatusBadge.classList.add('badge-gray');
   }
   
-  // Description formatée (remplacement de \n par des sauts de ligne)
-  const descriptionHtml = project.description_detaillee.replace(/\n/g, '<br>');
-  document.getElementById('modalDescription').innerHTML = descriptionHtml;
+  // Description formatée (conversion des puces markdown en HTML, et \n en <br>)
+  let formattedHtml = '';
+  const lines = project.description_detaillee.split('\n');
+  let inList = false;
+  
+  lines.forEach(line => {
+    const trimmed = line.trim();
+    if (trimmed.startsWith('- ')) {
+      if (!inList) {
+        formattedHtml += '<ul class="modal-desc-list">';
+        inList = true;
+      }
+      // Retirer le tiret et l'espace
+      let itemContent = trimmed.substring(2);
+      formattedHtml += `<li>${itemContent}</li>`;
+    } else {
+      if (inList) {
+        formattedHtml += '</ul>';
+        inList = false;
+      }
+      formattedHtml += line + '<br>';
+    }
+  });
+  if (inList) {
+    formattedHtml += '</ul>';
+  }
+  
+  // Remplacer les successions de multiples <br> inutiles après la fermeture de liste
+  formattedHtml = formattedHtml.replace(/<\/ul><br>/g, '</ul>');
+  
+  document.getElementById('modalDescription').innerHTML = formattedHtml;
   
   // Remplissage de la liste des technologies
   const techContainer = document.getElementById('modalTechnologies');
