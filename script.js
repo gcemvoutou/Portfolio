@@ -1,4 +1,4 @@
-// script.js - Portfolio Dynamique Clara (Thème Netflix Informatique)
+// script.js - Portfolio Dynamique Clara
 
 // Fallback de données pour s'assurer que le site fonctionne parfaitement même en local (sans serveur HTTP local)
 const PROJECTS_FALLBACK = [
