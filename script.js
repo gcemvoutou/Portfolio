@@ -1,4 +1,4 @@
-// script.js - Portfolio Dynamique Clara
+// script.js - Portfolio Dynamique Clara (Thème Netflix Informatique)
 
 // Fallback de données pour s'assurer que le site fonctionne parfaitement même en local (sans serveur HTTP local)
 const PROJECTS_FALLBACK = [
@@ -11,9 +11,7 @@ const PROJECTS_FALLBACK = [
     "description_detaillee": "Ce projet de laboratoire m'a permis d'acquérir une compréhension approfondie de l'administration d'un parc informatique d'entreprise sous Windows Server 2022.\n\n- Déployer un contrôleur de domaine Active Directory (AD DS) et son service DNS\n- Structurer un annuaire avec des unités d'organisation (OU) et des groupes de sécurité selon le modèle AGDLP\n- Créer et administrer des comptes utilisateurs (manuellement et via PowerShell)\n- Joindre un poste client Windows 10 au domaine\n- Déployer des stratégies de groupe (GPO) : fond d'écran, restrictions, lecteur réseau\n- Configurer des profils itinérants et des répertoires personnels (lecteurs réseau)",
     "technologies": ["Windows Server 2022", "Active Directory", "PowerShell", "VMware Workstation Pro", "DNS", "DHCP", "GPO"],
     "image": "assets/active-directory.png",
-    "lien": "https://github.com/gcemvoutou/lab-active-directory-sisr",
-    "statut": "Terminé — documenté",
-    "statut_type": "termine"
+    "lien": "https://github.com/gcemvoutou/lab-active-directory-sisr"
   },
   {
     "id": 2,
@@ -24,9 +22,7 @@ const PROJECTS_FALLBACK = [
     "description_detaillee": "Mise en place d'une plateforme de base de connaissances (Wiki) personnelle pour centraliser mes documentations et procédures techniques.\n\nCe projet d'infrastructure comprend :\n\n- Le déploiement de la stack BookStack, MariaDB, et Nginx Proxy Manager via Docker Compose.\n\n- La configuration de Nginx Proxy Manager en tant que Reverse Proxy pour sécuriser les échanges avec un certificat SSL Let's Encrypt gratuit.\n\n- L'attribution d'un nom de domaine gratuit via le service de DNS dynamique DuckDNS.\n\n- La redirection sécurisée des ports (port forwarding) sur une box Bouygues Telecom.\n\n- La résolution d'erreurs d'initialisation de base de données (MariaDB troubleshooting) et la migration de la configuration depuis un Raspberry Pi de l'école vers un Raspberry Pi personnel en utilisant des commandes sécurisées SCP.",
     "technologies": ["Docker", "Docker Compose", "Nginx Proxy Manager", "MariaDB", "Let's Encrypt", "DuckDNS", "Raspberry Pi"],
     "image": "assets/bookstack.png",
-    "lien": "https://github.com/gcemvoutou/Cr-er-un-Serveur-Bookstak-sur-Raspberry-Pi-4/tree/main",
-    "statut": "Terminé — documenté",
-    "statut_type": "termine"
+    "lien": "https://github.com/gcemvoutou/Cr-er-un-Serveur-Bookstak-sur-Raspberry-Pi-4/tree/main"
   },
   {
     "id": 3,
@@ -37,9 +33,7 @@ const PROJECTS_FALLBACK = [
     "description_detaillee": "Ce projet pratique consistait à transformer une appliance réseau Riverbed en un pare-feu opérationnel via la distribution open-source OPNsense.\n\nLe projet s'est articulé autour de deux volets :\n\n- **Volet 1 : Installation et configuration initiale**\n  - Préparation d'une clé USB bootable.\n  - Accès console (PuTTY, 115200 bauds).\n  - Installation du système (ZFS, GPT/UEFI).\n  - Assignation des interfaces WAN (DHCP) et LAN (statique 192.168.6.254/24).\n\n- **Volet 2 : Sécurisation et configuration avancée**\n  - Sécurisation de l'accès à l'interface d'administration via HTTPS (certificat auto-signé).\n  - Mise en place des règles de filtrage (Firewall Rules) pour autoriser le trafic LAN vers WAN.\n  - Configuration du NAT sortant (Outbound NAT) pour permettre l'accès à internet.\n  - Vérification du trafic via les logs en temps réel (Live View).",
     "technologies": ["OPNsense", "FreeBSD", "Riverbed", "PuTTY", "Rufus", "HTTPS", "NAT"],
     "image": "assets/OPNsense.png",
-    "lien": "#",
-    "statut": "Terminé — documenté",
-    "statut_type": "termine"
+    "lien": "#"
   },
   {
     "id": 6,
@@ -50,9 +44,18 @@ const PROJECTS_FALLBACK = [
     "description_detaillee": "CheckMK Raw Edition (CRE) est une solution de supervision réseau open source. Dans le cadre de mon alternance à la Mairie de Saint-Égrève, j'ai été chargée de centraliser et piloter la supervision d'une infrastructure hétérogène répartie sur de nombreux sites distants (Hôtel de Ville, écoles, gymnases, services techniques) afin de :\n\n- Garantir la continuité du service public\n- Anticiper les pannes matérielles ou réseau\n- Fiabiliser l'inventaire des équipements supervisés\n\nÀ ce jour, 204 hôtes sont enregistrés dans la solution, un chiffre amené à évoluer au fil des mises en production et des retraits de matériel.",
     "technologies": ["CheckMK", "CRE", "Linux", "Supervision", "Réseau"],
     "image": "assets/Checkmk.png",
-    "lien": "https://github.com/gcemvoutou/Checkmk-supervision-mairie",
-    "statut": "Terminé — documenté",
-    "statut_type": "termine"
+    "lien": "https://github.com/gcemvoutou/Checkmk-supervision-mairie"
+  },
+  {
+    "id": 7,
+    "titre": "Projets Cisco Packet Tracer",
+    "categorie": "réseau",
+    "contexte": "scolaire",
+    "description": "Ensemble de travaux pratiques réseau (routage, DHCP, DNS, interconnexion multi-sites) réalisés sous Cisco Packet Tracer dans le cadre du BTS SIO SISR.",
+    "description_detaillee": "Ensemble de travaux pratiques réalisés en autonomie sous Cisco Packet Tracer dans le cadre de ma formation BTS SIO SISR. Les projets abordent des thématiques variées : configuration réseau, routage, services DHCP/DNS, interconnexion multi-sites, et bien d'autres à venir au fil de la formation.",
+    "technologies": ["Cisco Packet Tracer", "Réseau", "Routage", "DHCP", "DNS"],
+    "image": "assets/cisco.png",
+    "lien": "https://github.com/gcemvoutou/projets-cisco-packet-tracer"
   },
   {
     "id": 4,
@@ -62,9 +65,7 @@ const PROJECTS_FALLBACK = [
     "description": "Portfolio professionnel statique inspiré de la charte graphique de Netflix (noir et bleu). Développé en HTML/CSS/JS et propulsé par Gemini CLI.",
     "description_detaillee": "Conception et développement de mon site vitrine personnel. Pour donner une touche résolument informatique et orientée technologie, j'ai revisité la charte graphique de Netflix en remplaçant la couleur rouge emblématique par un bleu électrique percutant.\n\nFonctionnalités clés :\n- Interface moderne 100% responsive avec animations fluides.\n- Menu de navigation dynamique (changement d'opacité au défilement).\n- Chargement asynchrone des projets à partir d'un fichier JSON local.\n- Filtrage dynamique des projets sans rechargement de page (via JavaScript).\n- Système de modale de détails ('More Info') inspiré de Netflix pour chaque projet.\n- Formulaire de contact sécurisé connecté à FormSubmit pour recevoir directement les messages par e-mail.\n- Hébergement et déploiement continu sur Netlify.",
     "technologies": ["HTML", "CSS", "JavaScript", "JSON", "Gemini CLI", "Netlify"],
-    "lien": "#",
-    "statut": "En cours",
-    "statut_type": "en_cours"
+    "lien": "#"
   },
   {
     "id": 5,
@@ -74,9 +75,7 @@ const PROJECTS_FALLBACK = [
     "description": "Installation d'un serveur DNS avec filtrage publicitaire sur Raspberry Pi. Mode DNS uniquement (sans prise en charge du DHCP). Projet planifié.",
     "description_detaillee": "Projet à venir visant à améliorer la sécurité et la vitesse de navigation au sein de mon réseau domestique en déployant un serveur de blocage de publicité et de traceurs réseau au niveau DNS (trou noir DNS).\n\nL'objectif sera de :\n- Installer Pi-hole sur un Raspberry Pi.\n- Configurer le serveur DNS local de manière autonome sans activer le serveur DHCP de Pi-hole (pour conserver le DHCP existant de la box).\n- Créer des listes de blocage personnalisées (adlists) pour filtrer les publicités et les sites malveillants à la source pour l'ensemble des appareils connectés.",
     "technologies": ["Pi-hole", "Raspberry Pi", "DNS"],
-    "lien": "#",
-    "statut": "Prévu",
-    "statut_type": "prevu"
+    "lien": "#"
   }
 ];
 
@@ -183,17 +182,6 @@ function renderProjects(projectsToRender) {
     const card = document.createElement('div');
     card.classList.add('project-card');
     card.setAttribute('data-id', project.id);
-    
-    // Déterminer la classe CSS selon le statut
-    let badgeClass = 'status-badge ';
-    if (project.statut_type === 'termine') {
-      badgeClass += 'badge-green';
-    } else if (project.statut_type === 'en_cours') {
-      badgeClass += 'badge-blue';
-    } else {
-      badgeClass += 'badge-gray';
-    }
-    
     // Création du contenu HTML de la carte
     // On mime un visuel de carte Netflix (Affiche sobre avec logo tech, titre, et icônes au hover)
     const techSpanList = project.technologies.slice(0, 3).map(tech => `<span>${tech}</span>`).join(' • ');
@@ -291,18 +279,6 @@ function openProjectModal(id) {
   // Remplissage des données du modal
   document.getElementById('modalTitle').innerText = project.titre;
   document.getElementById('modalCategory').innerText = project.categorie.toUpperCase();
-  document.getElementById('modalStatus').innerText = project.statut;
-  
-  // Classe de statut du modal
-  const modalStatusBadge = document.getElementById('modalStatus');
-  modalStatusBadge.className = 'status-badge'; // reset
-  if (project.statut_type === 'termine') {
-    modalStatusBadge.classList.add('badge-green');
-  } else if (project.statut_type === 'en_cours') {
-    modalStatusBadge.classList.add('badge-blue');
-  } else {
-    modalStatusBadge.classList.add('badge-gray');
-  }
   
   // Description formatée (conversion des puces markdown en HTML, et \n en <br>)
   let formattedHtml = '';
