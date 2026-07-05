@@ -223,9 +223,6 @@ function renderProjects(projectsToRender) {
           <button class="action-btn play-btn" onclick="openProjectModal(${project.id})" title="Plus d'informations">
             <i class="fa-solid fa-play"></i>
           </button>
-          <button class="action-btn info-btn" onclick="openProjectModal(${project.id})" title="En savoir plus">
-            <i class="fa-solid fa-chevron-down"></i>
-          </button>
           ${project.lien !== '#' ? `
             <a href="${project.lien}" target="_blank" class="action-btn link-btn" title="Voir le code">
               <i class="fa-brands fa-github"></i>
@@ -371,4 +368,47 @@ window.onclick = function(event) {
   if (event.target == modal) {
     closeProjectModal();
   }
+}
+
+// ==================================================
+// FORMULAIRE DE CONTACT (EmailJS)
+// ==================================================
+
+// Clé publique EmailJS - sans risque à exposer côté client (faite pour ça)
+emailjs.init('DcFh8IKc1fnIFAjHn');
+
+const EMAILJS_SERVICE_ID = 'service_w3vyoef';
+const EMAILJS_TEMPLATE_ID = 'template_3wdf9mm';
+
+const contactForm = document.getElementById('contactForm');
+
+if (contactForm) {
+  contactForm.addEventListener('submit', async function (event) {
+    event.preventDefault();
+
+    const submitBtn = document.getElementById('submitBtn');
+    const statusBox = document.getElementById('formStatus');
+
+    // État "envoi en cours"
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Envoi en cours...';
+    statusBox.style.display = 'none';
+    statusBox.className = 'form-status';
+
+    try {
+      await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, contactForm);
+
+      statusBox.classList.add('success');
+      statusBox.innerHTML = '<i class="fa-solid fa-circle-check"></i> Votre message a bien été envoyé, je vous répondrai rapidement !';
+      contactForm.reset();
+    } catch (error) {
+      console.error('Erreur EmailJS:', error);
+      statusBox.classList.add('error');
+      statusBox.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> Une erreur est survenue. Merci de réessayer ou de m\'écrire directement à emvoutouclara@gmail.com';
+    } finally {
+      statusBox.style.display = 'flex';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Envoyer le message';
+    }
+  });
 }
