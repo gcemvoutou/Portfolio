@@ -376,14 +376,8 @@
         
         <!-- FormSubmit : Service tiers gratuit pour envoyer les soumissions sur email directement -->
         <!-- Sans captcha pour une meilleure UI, avec redirection intelligente -->
-        <form action="https://formsubmit.co/emvoutouclara@gmail.com" method="POST">
-          
-          <!-- Configuration FormSubmit -->
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_subject" value="Nouveau message depuis ton Portfolio !">
-          <input type="hidden" name="_template" value="table">
-          <!-- Optionnel : Redirection après envoi. On peut laisser FormSubmit afficher sa page de succès ou rediriger vers l'index -->
-          <input type="hidden" name="_next" value="https://emvoutouclara-portfolio.netlify.app/"> 
+        <form id="contactForm">
+          <!-- Envoi géré via EmailJS (voir script.js) -->
           
           <div class="form-group">
             <label for="name">Votre Nom / Entreprise</label>
@@ -405,8 +399,10 @@
             <textarea name="message" id="message" class="form-input" placeholder="Décrivez votre projet ou votre demande..." required></textarea>
           </div>
           
-          <button type="submit" class="btn-submit">Envoyer le message</button>
+          <button type="submit" class="btn-submit" id="submitBtn">Envoyer le message</button>
         </form>
+
+        <div id="formStatus" class="form-status" style="display:none;"></div>
         
         <div class="contact-note">
           Des questions ? Envoyez directement un email à <a href="mailto:emvoutouclara@gmail.com">emvoutouclara@gmail.com</a>
@@ -479,7 +475,6 @@
         
         <div class="modal-meta-row">
           <span id="modalCategory" class="modal-category">CATÉGORIE</span>
-          <span style="color: var(--text-muted);">Match de compétence : 100%</span>
         </div>
         
         <div class="modal-grid-layout">
@@ -501,7 +496,7 @@
             </div>
             
             <div style="margin-top: 15px;">
-              <h4>Lien de l'épisode</h4>
+              <h4>Documentation</h4>
               <div id="modalGithubBtnContainer">
                 <!-- Rempli en JS -->
               </div>
@@ -513,6 +508,7 @@
   </div>
 
   <!-- JavaScript dynamique -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
