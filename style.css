@@ -724,27 +724,16 @@ section {
   align-items: center;
   justify-content: center;
   border-bottom: 2px solid rgba(255, 255, 255, 0.05);
-  overflow: hidden; /* Ajout pour empêcher le débordement */
+  overflow: hidden;
+  padding: 0;
 }
 
 .card-thumbnail img {
   width: 100%;
-  height: 180px;
+  height: 100%;
   object-fit: cover;
+  object-position: center;
   display: block;
-}
-
-/* Ajustement spécifique pour l'image Active Directory (réduction visuelle par padding) */
-[src="assets/active-directory.png"] {
-  object-position: center bottom;
-  padding: 10px; /* Ajout d'un padding pour la réduire un peu */
-}
-
-/* Ajustement spécifique pour l'image OPNsense */
-[src="assets/OPNsense.png"] {
-  object-fit: contain !important;
-  background-color: var(--bg-lighter);
-  padding: 40px; /* Augmentation du padding pour la réduire davantage */
 }
 
 .card-tech-overlay {
