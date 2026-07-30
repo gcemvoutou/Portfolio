@@ -1487,6 +1487,42 @@ textarea.form-input {
 }
 
 @media (max-width: 768px) {
+  /* Header & Nom */
+  .logo {
+    font-size: 1.2rem;
+  }
+  
+  .nav-actions {
+    gap: 10px;
+  }
+  
+  .cv-btn {
+    padding: 6px 12px;
+    font-size: 0.8rem;
+  }
+
+  /* Contenu - Décalage section Projets */
+  #projects {
+    scroll-margin-top: 80px;
+  }
+
+  /* Cartes & Images Projets */
+  .projects-grid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 20px;
+  }
+
+  .project-card {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .card-thumbnail img {
+    object-fit: cover !important;
+  }
+
   /* Menu Mobile Actif */
   .burger-menu {
     display: flex;
