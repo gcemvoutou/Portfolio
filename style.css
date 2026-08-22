@@ -1,15 +1,15 @@
 /* style.css - Charte graphique Netflix revisitée (Noir & Bleu Informatique) */
 
 :root {
-  --bg-color: #141414;          /* Noir emblématique de Netflix */
+  --bg-color: #141414;          /* Noir  */
   --bg-darker: #0c0c0c;         /* Noir profond pour contrastes */
   --bg-lighter: #1e1e1e;        /* Gris foncé pour cartes/éléments */
-  --bg-modal: #181818;          /* Arrière-plan de la modale Netflix */
+  --bg-modal: #181818;          /* Arrière-plan de la modale  */
   --text-color: #ffffff;        /* Blanc de base */
   --text-secondary: #aaaaaa;    /* Gris clair pour textes secondaires */
   --text-muted: #777777;        /* Gris moyen pour textes d'arrière-plan */
   
-  /* Palette de Bleu Électrique (remplace le Rouge Netflix) */
+  /* Palette de Bleu Électrique (remplace le Rouge ) */
   --netflix-blue: #0071eb;      /* Bleu principal vif */
   --netflix-blue-hover: #005fcb;/* Bleu au survol */
   --netflix-blue-dark: #004094; /* Bleu sombre */
@@ -17,7 +17,7 @@
   --netflix-blue-transparent: rgba(0, 113, 235, 0.15);
   
   /* Status Badges */
-  --success-green: #46d369;     /* Vert d'approbation (Netflix style) */
+  --success-green: #46d369;     /* Vert d'approbation ( style) */
   --warning-blue: #00a8ff;      /* Bleu info pour "En cours" */
   --gray-badge: #555555;        /* Gris pour "Prévu" */
   
@@ -571,6 +571,31 @@ section {
   margin-top: 5px;
 }
 
+/* Skill Tags layout */
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.skill-tags span {
+  font-size: 0.75rem;
+  font-weight: 500;
+  background-color: rgba(0, 113, 235, 0.08);
+  border: 1px solid rgba(0, 113, 235, 0.25);
+  color: #dfdfdf;
+  padding: 3px 8px;
+  border-radius: 4px;
+  transition: var(--transition-fast);
+}
+
+.skill-card:hover .skill-tags span {
+  color: #ffffff;
+  border-color: var(--netflix-blue);
+  background-color: rgba(0, 113, 235, 0.15);
+}
+
 /* Langues & Outils */
 .others-container {
   display: grid;
@@ -687,6 +712,34 @@ section {
 
 /* Grille de projets */
 .projects-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.projects-group {
+  margin-bottom: 20px;
+}
+
+.projects-group-title {
+  font-family: var(--font-headings);
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding-bottom: 10px;
+}
+
+.projects-group-title i {
+  color: var(--netflix-blue);
+  text-shadow: 0 0 10px var(--netflix-blue-glow);
+}
+
+.projects-group-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 30px;
@@ -945,6 +998,165 @@ section {
 
 .faq-item.active .faq-question {
   border-radius: 4px 4px 0 0;
+}
+
+/* -------------------------------------------------- */
+/* 7.1 Veille Technologique Section                   */
+/* -------------------------------------------------- */
+#veille {
+  background-color: var(--bg-darker);
+}
+
+.section-subtitle-desc {
+  max-width: 800px;
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  margin-top: -15px;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+.veille-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.veille-card {
+  background-color: var(--bg-lighter);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 250px;
+  transition: var(--transition-smooth);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.veille-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: var(--netflix-blue);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6),
+              0 0 15px var(--netflix-blue-glow);
+}
+
+.veille-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.veille-source-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.veille-logo {
+  width: 54px;
+  height: 54px;
+  border-radius: 8px;
+  object-fit: contain; /* contain ensures logos are fully visible without being cropped */
+  background-color: #ffffff; /* White background makes most logos pop clearly */
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 4px; /* added a bit more padding for contain to look breatheable */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
+
+.veille-date {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.veille-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+/* Veille Tags styling */
+.tag-cyber {
+  background-color: rgba(231, 76, 60, 0.1);
+  color: #e74c3c;
+  border: 1px solid rgba(231, 76, 60, 0.25);
+}
+
+.tag-network {
+  background-color: rgba(0, 113, 235, 0.1);
+  color: #85bbf9;
+  border: 1px solid rgba(0, 113, 235, 0.25);
+}
+
+.tag-supervision {
+  background-color: rgba(46, 211, 105, 0.1);
+  color: var(--success-green);
+  border: 1px solid rgba(46, 211, 105, 0.25);
+}
+
+.veille-card-body {
+  flex-grow: 1;
+  margin-bottom: 20px;
+}
+
+.veille-card-body h3 {
+  font-family: var(--font-headings);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 12px;
+  line-height: 1.4;
+  transition: var(--transition-fast);
+}
+
+.veille-card:hover .veille-card-body h3 {
+  color: var(--netflix-blue);
+}
+
+.veille-card-body p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.veille-card-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 20px;
+}
+
+.veille-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #ffffff;
+  transition: var(--transition-fast);
+}
+
+.veille-link i {
+  font-size: 0.8rem;
+  transition: var(--transition-fast);
+}
+
+.veille-link:hover {
+  color: var(--netflix-blue);
+}
+
+.veille-link:hover i {
+  transform: translate(2px, -2px);
 }
 
 /* -------------------------------------------------- */
@@ -1561,45 +1773,6 @@ textarea.form-input {
   .hero-desc {
     font-size: 0.95rem;
   }
-  
-/* -------------------------------------------------- */
-/* 6.1 Section Veille Technologique                   */
-/* -------------------------------------------------- */
-.veille-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-  margin-top: 30px;
-}
-
-.veille-card {
-  background-color: var(--bg-lighter);
-  padding: 30px;
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: var(--transition-fast);
-}
-
-.veille-card:hover {
-  border-color: var(--netflix-blue);
-  transform: translateY(-5px);
-}
-
-.veille-card h3 {
-  font-size: 1.25rem;
-  color: var(--netflix-blue);
-  margin-bottom: 15px;
-}
-
-.veille-card p {
-  color: var(--text-secondary);
-  font-size: 0.95rem;
-  line-height: 1.6;
-}
-
-/* -------------------------------------------------- */
-/* 12. Media Queries (Responsiveness)                 */
-/* -------------------------------------------------- */
   .modal-title {
     font-size: 1.6rem;
   }
@@ -1629,5 +1802,253 @@ textarea.form-input {
   
   .section-title {
     font-size: 1.8rem;
+  }
+}
+
+/* ================================================== */
+/* ARBRE DES COMPÉTENCES DÉROULANT (ACCORDÉON)        */
+/* ================================================== */
+
+.skills-tree {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: start;
+  max-width: 1200px;
+  margin: 0 auto 40px auto;
+}
+
+@media (max-width: 768px) {
+  .skills-tree {
+    grid-template-columns: 1fr;
+  }
+}
+
+.tree-category-wrapper {
+  background-color: var(--bg-lighter);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: 8px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tree-category-wrapper:hover {
+  border-color: rgba(0, 113, 235, 0.25);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+}
+
+.tree-category-btn {
+  width: 100%;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  padding: 18px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-headings);
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: left;
+  outline: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.tree-category-btn:hover, .tree-category-btn:focus-visible {
+  background-color: rgba(255, 255, 255, 0.02);
+  color: var(--netflix-blue);
+}
+
+.tree-category-btn:focus-visible {
+  outline: 2px solid var(--netflix-blue);
+}
+
+.tree-title-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.tree-icon {
+  color: var(--netflix-blue);
+  text-shadow: 0 0 10px var(--netflix-blue-glow);
+  font-size: 1.25rem;
+  width: 20px;
+  text-align: center;
+}
+
+.tree-chevron, .tree-chevron-sub {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  transition: transform 0.3s ease;
+}
+
+/* Pivoter le chevron */
+button[aria-expanded="true"] .tree-chevron,
+button[aria-expanded="true"] .tree-chevron-sub {
+  transform: rotate(90deg);
+  color: #ffffff;
+}
+
+/* Contenu extensible */
+.tree-category-content, .tree-subtheme-content {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+  overflow: hidden;
+}
+
+.tree-category-content.open, .tree-subtheme-content.open {
+  grid-template-rows: 1fr;
+}
+
+.tree-category-inner-wrapper, .tree-subtheme-inner-wrapper {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.tree-category-inner {
+  padding: 10px 25px 25px 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  position: relative;
+  border-top: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+/* Ligne d'arborescence verticale (Niveau 1 -> Niveau 2) */
+.tree-category-inner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 37px;
+  bottom: 25px;
+  width: 1px;
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.tree-subtheme-wrapper {
+  position: relative;
+  padding-left: 35px;
+}
+
+/* Raccord horizontal pour le niveau 2 */
+.tree-subtheme-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 22px;
+  left: 12px;
+  width: 18px;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.tree-subtheme-btn {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: 6px;
+  color: #ffffff;
+  padding: 12px 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-headings);
+  font-size: 1.02rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  outline: none;
+  transition: var(--transition-fast);
+}
+
+.tree-subtheme-btn:hover, .tree-subtheme-btn:focus-visible {
+  background-color: rgba(0, 113, 235, 0.08);
+  border-color: rgba(0, 113, 235, 0.3);
+  color: #ffffff;
+}
+
+.tree-subtheme-btn:focus-visible {
+  outline: 2px solid var(--netflix-blue);
+}
+
+.tree-icon-sub {
+  color: var(--netflix-blue);
+  font-size: 1.05rem;
+  width: 18px;
+  text-align: center;
+}
+
+.tree-subtheme-inner {
+  padding: 12px 18px 15px 48px;
+  position: relative;
+}
+
+/* Ligne d'arborescence verticale (Niveau 2 -> Niveau 3) */
+.tree-subtheme-inner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 28px;
+  bottom: 25px;
+  width: 1px;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Animation et délai d'apparition des tags */
+.tree-subtheme-content.open .staggered-tag {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  transition-delay: var(--stagger-delay, 0ms);
+}
+
+.staggered-tag {
+  opacity: 0;
+  transform: translateY(6px);
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 500;
+  background-color: rgba(0, 113, 235, 0.08);
+  border: 1px solid rgba(0, 113, 235, 0.25);
+  color: var(--text-secondary);
+  padding: 4px 10px;
+  border-radius: 4px;
+  transition: opacity 0.15s ease, transform 0.15s ease, border-color 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.staggered-tag:hover {
+  color: #ffffff;
+  border-color: var(--netflix-blue);
+  background-color: rgba(0, 113, 235, 0.18);
+  transform: translateY(-2px) !important;
+  box-shadow: 0 2px 8px var(--netflix-blue-glow);
+}
+
+/* Ajustements responsive de l'indendation */
+@media (max-width: 580px) {
+  .tree-category-btn {
+    padding: 15px 18px;
+    font-size: 1.1rem;
+  }
+  .tree-category-inner {
+    padding: 10px 15px 15px 15px;
+  }
+  .tree-category-inner::before {
+    left: 28px;
+  }
+  .tree-subtheme-wrapper {
+    padding-left: 25px;
+  }
+  .tree-subtheme-wrapper::before {
+    left: 10px;
+    width: 15px;
+  }
+  .tree-subtheme-inner {
+    padding-left: 30px;
+    padding-right: 5px;
+  }
+  .tree-subtheme-inner::before {
+    left: 15px;
   }
 }
