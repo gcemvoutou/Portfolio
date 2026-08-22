@@ -26,14 +26,14 @@ const PROJECTS_FALLBACK = [
   },
   {
     "id": 3,
-    "titre": "TP_Parefeu_OPNsense",
+    "titre": "Pare-feu OPNsense",
     "categorie": "réseau",
     "contexte": "scolaire",
     "description": "Installation et configuration complète d'un pare-feu OPNsense sur appliance Riverbed. Inclut la préparation (Rufus, console), l'installation (ZFS), et la sécurisation avancée (HTTPS, filtrage, NAT).",
     "description_detaillee": "Ce projet pratique consistait à transformer une appliance réseau Riverbed en un pare-feu opérationnel via la distribution open-source OPNsense.\n\nLe projet s'est articulé autour de deux volets :\n\n- **Volet 1 : Installation et configuration initiale**\n  - Préparation d'une clé USB bootable.\n  - Accès console (PuTTY, 115200 bauds).\n  - Installation du système (ZFS, GPT/UEFI).\n  - Assignation des interfaces WAN (DHCP) et LAN (statique 192.168.6.254/24).\n\n- **Volet 2 : Sécurisation et configuration avancée**\n  - Sécurisation de l'accès à l'interface d'administration via HTTPS (certificat auto-signé).\n  - Mise en place des règles de filtrage (Firewall Rules) pour autoriser le trafic LAN vers WAN.\n  - Configuration du NAT sortant (Outbound NAT) pour permettre l'accès à internet.\n  - Vérification du trafic via les logs en temps réel (Live View).",
     "technologies": ["OPNsense", "FreeBSD", "Riverbed", "PuTTY", "Rufus", "HTTPS", "NAT"],
     "image": "assets/OPNsense.png",
-    "lien": "#"
+    "lien": "https://github.com/gcemvoutou/OPNsense_Riverbed.git"
   },
   {
     "id": 6,
@@ -41,7 +41,7 @@ const PROJECTS_FALLBACK = [
     "categorie": "réseau",
     "contexte": "entreprise",
     "description": "Supervision d'une infrastructure hétérogène de 204 hôtes répartis sur les sites distants de la Mairie de Saint-Égrève avec CheckMK Raw Edition (CRE).",
-    "description_detaillee": "CheckMK Raw Edition (CRE) est une solution de supervision réseau open source. Dans le cadre de mon alternance à la Mairie de Saint-Égrève, j'ai été chargée de centraliser et piloter la supervision d'une infrastructure hétérogène répartie sur de nombreux sites distants (Hôtel de Ville, écoles, gymnases, services techniques) afin de :\n\n- Garantir la continuité du service public\n- Anticiper les pannes matérielles ou réseau\n- Fiabiliser l'inventaire des équipements supervisés\n\nÀ ce jour, 204 hôtes sont enregistrés dans la solution, un chiffre amené à évoluer au fil des mises en production et des retraits de matériel.",
+    "description_detaillee": "CheckMK Raw Edition (CRE) est une solution de supervision réseau open source. Dans le cadre de mon alternance à la Mairie de Saint-Égrève, j'ai été chargée de centraliser et piloter la supervision d'une infrastructure hétérogène répartie sur de nombreux sites distants (Hôtel de Ville, écoles, gymnases, services techniques) afin de :\n\n- Garantir la continuité du service public\n- Anticiper les pannes matérielles ou réseau\n- Fiabiliser l'inventaire des équipements supervisés\n\nÀ ce jour, 204 hôtes sont enregistrés dans la solution, un chiffre amène à évoluer au fil des mises en production et des retraits de matériel.",
     "technologies": ["CheckMK", "CRE", "Linux", "Supervision", "Réseau"],
     "image": "assets/Checkmk.png",
     "lien": "https://github.com/gcemvoutou/Checkmk-supervision-mairie"
@@ -75,7 +75,8 @@ const PROJECTS_FALLBACK = [
     "description": "Installation d'un serveur DNS avec filtrage publicitaire sur Raspberry Pi. Mode DNS uniquement (sans prise en charge du DHCP). Projet planifié.",
     "description_detaillee": "Projet à venir visant à améliorer la sécurité et la vitesse de navigation au sein de mon réseau domestique en déployant un serveur de blocage de publicité et de traceurs réseau au niveau DNS (trou noir DNS).\n\nL'objectif sera de :\n- Installer Pi-hole sur un Raspberry Pi.\n- Configurer le serveur DNS local de manière autonome sans activer le serveur DHCP de Pi-hole (pour conserver le DHCP existant de la box).\n- Créer des listes de blocage personnalisées (adlists) pour filtrer les publicités et les sites malveillants à la source pour l'ensemble des appareils connectés.",
     "technologies": ["Pi-hole", "Raspberry Pi", "DNS"],
-    "lien": "#"
+    "lien": "#",
+    "statut": "a_venir"
   },
   {
     "id": 8,
@@ -104,6 +105,15 @@ document.addEventListener('DOMContentLoaded', () => {
   
   // Chargement des projets
   loadProjects();
+
+  // Initialisation de l'arbre des compétences
+  renderSkillsTree();
+
+  // Mise à jour dynamique de l'année du copyright
+  const copyrightYear = document.getElementById('copyright-year');
+  if (copyrightYear) {
+    copyrightYear.textContent = new Date().getFullYear();
+  }
 });
 
 // 1. Gestion de la barre de navigation
@@ -188,69 +198,117 @@ function renderProjects(projectsToRender) {
     return;
   }
   
+  // Regrouper les projets par contexte (entreprise, scolaire, perso)
+  const categories = {
+    'entreprise': {
+      title: 'Projets en Entreprise',
+      icon: 'fa-building-shield',
+      projects: []
+    },
+    'scolaire': {
+      title: 'Projets Scolaires',
+      icon: 'fa-graduation-cap',
+      projects: []
+    },
+    'perso': {
+      title: 'Projets Personnels',
+      icon: 'fa-laptop-code',
+      projects: []
+    }
+  };
+  
   projectsToRender.forEach(project => {
-    // Créer la carte de projet
-    const card = document.createElement('div');
-    card.classList.add('project-card');
-    card.setAttribute('data-id', project.id);
-    // Création du contenu HTML de la carte
-    // On mime un visuel de carte Netflix (Affiche sobre avec logo tech, titre, et icônes au hover)
-    const techSpanList = project.technologies.slice(0, 3).map(tech => `<span>${tech}</span>`).join(' • ');
-    
-    // Déterminer une icône ou illustration représentative basée sur la catégorie
-    let categoryIcon = 'fa-server';
-    if (project.categorie === 'infrastructure') categoryIcon = 'fa-network-wired';
-    if (project.categorie === 'réseau') categoryIcon = 'fa-shield-halved';
-    if (project.categorie === 'dev') categoryIcon = 'fa-code';
-    
-    // Déterminer la classe CSS selon le contexte
-    let contextBadgeClass = 'status-badge ';
-    if (project.contexte === 'perso') {
-      contextBadgeClass += 'badge-perso';
-    } else if (project.contexte === 'entreprise') {
-      contextBadgeClass += 'badge-entreprise';
-    } else if (project.contexte === 'scolaire') {
-      contextBadgeClass += 'badge-scolaire';
+    const ctx = project.contexte;
+    if (categories[ctx]) {
+      categories[ctx].projects.push(project);
     } else {
-      contextBadgeClass += 'badge-gray';
+      categories['perso'].projects.push(project);
     }
+  });
+  
+  // Rendu de chaque catégorie
+  Object.keys(categories).forEach(key => {
+    const group = categories[key];
+    if (group.projects.length === 0) return;
     
-    let cardThumbnailContent = `<i class="fa-solid ${categoryIcon}"></i>`;
-    let cardTitleContent = `<div class="card-title-fallback">${project.titre}</div>`;
-    if (project.image) {
-      cardThumbnailContent = `<img src="${project.image}" alt="${project.titre}" onclick="window.open('${project.image}', '_blank')" title="Cliquez pour agrandir l'image (pleine résolution)">`;
-      cardTitleContent = '';
-    }
+    // Créer la section du groupe
+    const groupSection = document.createElement('div');
+    groupSection.classList.add('projects-group');
     
-    card.innerHTML = `
-      <div class="card-thumbnail">
-        <div class="card-tech-overlay">
-          ${cardThumbnailContent}
-        </div>
-        ${cardTitleContent}
-      </div>
-      <div class="card-info">
-        <div class="card-actions">
-          <button class="action-btn play-btn" onclick="openProjectModal(${project.id})" title="Plus d'informations">
-            <i class="fa-solid fa-play"></i>
-          </button>
-          ${project.lien !== '#' ? `
-            <a href="${project.lien}" target="_blank" class="action-btn link-btn" title="Voir le code">
-              <i class="fa-brands fa-github"></i>
-            </a>
-          ` : ''}
-        </div>
-        <h4 class="project-title">${project.titre}</h4>
-        <div class="project-meta">
-          <span class="${contextBadgeClass}">${project.contexte}</span>
-          <span class="project-category">${project.categorie.toUpperCase()}</span>
-        </div>
-        <p class="project-excerpt">${project.description}</p>
-        <div class="project-techs">${techSpanList}</div>
-      </div>
-    `;
+    // Titre de la rubrique
+    const groupHeader = document.createElement('h3');
+    groupHeader.classList.add('projects-group-title');
+    groupHeader.innerHTML = `<i class="fa-solid ${group.icon}"></i> ${group.title}`;
+    groupSection.appendChild(groupHeader);
     
-    grid.appendChild(card);
+    // Grille spécifique à cette rubrique
+    const groupGrid = document.createElement('div');
+    groupGrid.classList.add('projects-group-grid');
+    
+    group.projects.forEach(project => {
+      const card = document.createElement('div');
+      card.classList.add('project-card');
+      card.setAttribute('data-id', project.id);
+      
+      const techSpanList = project.technologies.slice(0, 3).map(tech => `<span>${tech}</span>`).join(' • ');
+      
+      let categoryIcon = 'fa-server';
+      if (project.categorie === 'infrastructure') categoryIcon = 'fa-network-wired';
+      if (project.categorie === 'réseau') categoryIcon = 'fa-shield-halved';
+      if (project.categorie === 'dev') categoryIcon = 'fa-code';
+      
+      let contextBadgeClass = 'status-badge ';
+      if (project.contexte === 'perso') {
+        contextBadgeClass += 'badge-perso';
+      } else if (project.contexte === 'entreprise') {
+        contextBadgeClass += 'badge-entreprise';
+      } else if (project.contexte === 'scolaire') {
+        contextBadgeClass += 'badge-scolaire';
+      } else {
+        contextBadgeClass += 'badge-gray';
+      }
+      
+      let cardThumbnailContent = `<i class="fa-solid ${categoryIcon}"></i>`;
+      let cardTitleContent = `<div class="card-title-fallback">${project.titre}</div>`;
+      if (project.image) {
+        cardThumbnailContent = `<img src="${project.image}" alt="${project.titre}" onclick="window.open('${project.image}', '_blank')" title="Cliquez pour agrandir l'image (pleine résolution)">`;
+        cardTitleContent = '';
+      }
+      
+      card.innerHTML = `
+        <div class="card-thumbnail">
+          <div class="card-tech-overlay">
+            ${cardThumbnailContent}
+          </div>
+          ${cardTitleContent}
+        </div>
+        <div class="card-info">
+          <div class="card-actions">
+            <button class="action-btn play-btn" onclick="openProjectModal(${project.id})" title="Plus d'informations">
+              <i class="fa-solid fa-play"></i>
+            </button>
+            ${(project.lien !== '#' && project.statut !== 'a_venir') ? `
+              <a href="${project.lien}" target="_blank" class="action-btn link-btn" title="Voir le code">
+                <i class="fa-brands fa-github"></i>
+              </a>
+            ` : ''}
+          </div>
+          <h4 class="project-title">${project.titre}</h4>
+          <div class="project-meta">
+            <span class="${contextBadgeClass}">${project.contexte}</span>
+            ${project.statut === 'a_venir' ? `<span class="status-badge" style="background-color: rgba(128, 128, 128, 0.15); color: #aaaaaa; border: 1px solid rgba(128, 128, 128, 0.3);">À venir</span>` : ''}
+            <span class="project-category">${project.categorie.toUpperCase()}</span>
+          </div>
+          <p class="project-excerpt">${project.description}</p>
+          <div class="project-techs">${techSpanList}</div>
+        </div>
+      `;
+      
+      groupGrid.appendChild(card);
+    });
+    
+    groupSection.appendChild(groupGrid);
+    grid.appendChild(groupSection);
   });
 }
 
@@ -286,7 +344,7 @@ function openProjectModal(id) {
   
   // Remplissage des données du modal
   document.getElementById('modalTitle').innerText = project.titre;
-  document.getElementById('modalCategory').innerText = project.categorie.toUpperCase();
+  document.getElementById('modalCategory').innerHTML = `${project.categorie.toUpperCase()}`;
   
   // Description formatée (conversion des puces markdown en HTML, et \n en <br>)
   let formattedHtml = '';
@@ -396,7 +454,7 @@ const contactForm = document.getElementById('contactForm');
 if (contactForm) {
   contactForm.addEventListener('submit', async function (event) {
     event.preventDefault();
-
+ 
     const submitBtn = document.getElementById('submitBtn');
     const statusBox = document.getElementById('formStatus');
 
@@ -421,5 +479,137 @@ if (contactForm) {
       submitBtn.disabled = false;
       submitBtn.textContent = 'Envoyer le message';
     }
+  });
+}
+
+// ==================================================
+// ARBRE DES COMPÉTENCES DÉROULANT (ACCORDÉON)
+// ==================================================
+
+const SKILLS_DATA = [
+  {
+    category: "Systèmes & Infrastructure",
+    icon: "fa-server",
+    subthemes: [
+      {
+        name: "Windows Server 2022",
+        icon: "fa-brands fa-windows",
+        tags: ["Active Directory", "PowerShell", "DNS", "DHCP", "GPO", "UOs"]
+      },
+      {
+        name: "Linux (Debian / Ubuntu)",
+        icon: "fa-brands fa-linux",
+        tags: ["Administration CLI", "SSH", "Services", "Bash", "Configuration système"]
+      },
+      {
+        name: "Virtualisation",
+        icon: "fa-solid fa-cubes",
+        tags: ["VirtualBox", "VMware Workstation Pro"]
+      },
+      {
+        name: "Support utilisateurs / ITSM",
+        icon: "fa-solid fa-headset",
+        tags: ["Octopus ITSM", "Création & suivi tickets", "Résolution incidents"]
+      }
+    ]
+  },
+  {
+    category: "Réseaux & Cybersécurité",
+    icon: "fa-shield-halved",
+    subthemes: [
+      {
+        name: "Routage & Commutation",
+        icon: "fa-solid fa-network-wired",
+        tags: ["VLAN", "Adressage IP", "Switches", "Routage"]
+      },
+      {
+        name: "Supervision réseau",
+        icon: "fa-solid fa-eye",
+        tags: ["CheckMK", "SNMP", "Monitoring", "Analyse d'alertes"]
+      },
+      {
+        name: "Firewall OPNsense",
+        icon: "fa-solid fa-shield-halved",
+        tags: ["Filtrage", "NAT", "Interfaces", "Configuration réseau"]
+      },
+      {
+        name: "Sécurité active",
+        icon: "fa-solid fa-lock",
+        tags: ["Analyse alertes", "Détection comptes compromis", "Cyberassurance"]
+      }
+    ]
+  }
+];
+
+function renderSkillsTree() {
+  const container = document.getElementById('skills-tree');
+  if (!container) return;
+
+  container.innerHTML = SKILLS_DATA.map((cat, catIdx) => {
+    const catId = `cat-${catIdx}`;
+    return `
+      <div class="tree-category-wrapper">
+        <button class="tree-category-btn" aria-expanded="false" aria-controls="${catId}-content" id="${catId}-btn">
+          <span class="tree-title-wrapper">
+            <i class="fa-solid ${cat.icon} tree-icon"></i>
+            <span class="tree-category-name">${cat.category}</span>
+          </span>
+          <i class="fa-solid fa-chevron-right tree-chevron"></i>
+        </button>
+        <div id="${catId}-content" class="tree-category-content" role="region" aria-labelledby="${catId}-btn">
+          <div class="tree-category-inner-wrapper">
+            <div class="tree-category-inner">
+              ${cat.subthemes.map((sub, subIdx) => {
+                const subId = `sub-${catIdx}-${subIdx}`;
+                return `
+                  <div class="tree-subtheme-wrapper">
+                    <button class="tree-subtheme-btn" aria-expanded="false" aria-controls="${subId}-content" id="${subId}-btn">
+                      <span class="tree-title-wrapper">
+                        <i class="${sub.icon} tree-icon-sub"></i>
+                        <span class="tree-subtheme-name">${sub.name}</span>
+                      </span>
+                      <i class="fa-solid fa-chevron-right tree-chevron-sub"></i>
+                    </button>
+                    <div id="${subId}-content" class="tree-subtheme-content" role="region" aria-labelledby="${subId}-btn">
+                      <div class="tree-subtheme-inner-wrapper">
+                        <div class="tree-subtheme-inner">
+                          <div class="skill-tags">
+                            ${sub.tags.map((tag, tagIdx) => `
+                              <span class="staggered-tag" style="--stagger-delay: ${tagIdx * 50}ms">${tag}</span>
+                            `).join('')}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                `;
+              }).join('')}
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+
+  // Attach event listeners for category expand
+  const categoryBtns = container.querySelectorAll('.tree-category-btn');
+  categoryBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', !isExpanded);
+      const content = btn.nextElementSibling;
+      content.classList.toggle('open');
+    });
+  });
+
+  // Attach event listeners for subtheme expand
+  const subthemeBtns = container.querySelectorAll('.tree-subtheme-btn');
+  subthemeBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', !isExpanded);
+      const content = btn.nextElementSibling;
+      content.classList.toggle('open');
+    });
   });
 }
