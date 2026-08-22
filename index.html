@@ -4,6 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio — Clara EMVOUTOU — BTS SIO SISR</title>
+  <meta name="description" content="Portfolio professionnel de Clara EMVOUTOU, étudiante en BTS SIO SISR (2ème année) en alternance à la Mairie de Saint-Égrève. Projets, compétences et veille en systèmes, réseaux et cybersécurité.">
+  
+  <!-- Open Graph (Réseaux Sociaux) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Portfolio — Clara EMVOUTOU — BTS SIO SISR">
+  <meta property="og:description" content="Découvrez mes compétences et projets en administration systèmes, réseaux et cybersécurité.">
+  <meta property="og:image" content="https://amazing-eclair-6a2c91.netlify.app/assets/photo.jpg">
+  <meta property="og:url" content="https://amazing-eclair-6a2c91.netlify.app/">
+  <meta name="twitter:card" content="summary_large_image">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="assets/favicon.png" type="image/png">
   
   <!-- Fonts Google : Inter pour la lisibilité et Space Grotesk pour les titres techniques -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -32,6 +44,7 @@
         <li><a href="#about">À propos</a></li>
         <li><a href="#skills">Compétences</a></li>
         <li><a href="#projects">Projets</a></li>
+        <li><a href="#veille">Veille</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -139,89 +152,8 @@
     
     <div class="skills-container">
       
-      <!-- Rangée 1 : Systèmes & Infrastructure -->
-      <div class="skills-row">
-        <h3 class="skills-row-title"><i class="fa-solid fa-server"></i> Systèmes & Infrastructure</h3>
-        <div class="skills-grid">
-          <div class="skill-card">
-            <div class="skill-header">
-              <span class="skill-name">Windows Server 2022</span>
-              <i class="fa-brands fa-windows skill-icon"></i>
-            </div>
-            <p style="font-size: 0.8rem; color: var(--text-secondary);">Active Directory, DNS, DHCP, GPO, UOs</p>
-            <div class="skill-bar-container">
-              <div class="skill-bar" style="width: 75%;"></div>
-            </div>
-            <span class="skill-level-text">75% (Intermédiaire)</span>
-          </div>
-          
-          <div class="skill-card">
-            <div class="skill-header">
-              <span class="skill-name">Linux (Debian / Ubuntu)</span>
-              <i class="fa-brands fa-linux skill-icon"></i>
-            </div>
-            <p style="font-size: 0.8rem; color: var(--text-secondary);">Administration CLI, SSH, Configuration de base</p>
-            <div class="skill-bar-container">
-              <div class="skill-bar" style="width: 65%;"></div>
-            </div>
-            <span class="skill-level-text">65% (Intermédiaire)</span>
-          </div>
-          
-          <div class="skill-card">
-            <div class="skill-header">
-              <span class="skill-name">Virtualisation</span>
-              <i class="fa-solid fa-cubes skill-icon"></i>
-            </div>
-            <p style="font-size: 0.8rem; color: var(--text-secondary);">VirtualBox, VMware Workstation Pro</p>
-            <div class="skill-bar-container">
-              <div class="skill-bar" style="width: 70%;"></div>
-            </div>
-            <span class="skill-level-text">70% (Intermédiaire)</span>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Rangée 2 : Réseaux & Sécurité -->
-      <div class="skills-row">
-        <h3 class="skills-row-title"><i class="fa-solid fa-shield-halved"></i> Réseaux & Cybersécurité</h3>
-        <div class="skills-grid">
-          <div class="skill-card">
-            <div class="skill-header">
-              <span class="skill-name">Routage & Commutation</span>
-              <i class="fa-solid fa-network-wired skill-icon"></i>
-            </div>
-            <p style="font-size: 0.8rem; color: var(--text-secondary);">Configuration switches, VLANs, Adressage IP</p>
-            <div class="skill-bar-container">
-              <div class="skill-bar" style="width: 70%;"></div>
-            </div>
-            <span class="skill-level-text">70% (Intermédiaire)</span>
-          </div>
-          
-          <div class="skill-card">
-            <div class="skill-header">
-              <span class="skill-name">Firewall OPNsense</span>
-              <i class="fa-solid fa-shield-halved skill-icon"></i>
-            </div>
-            <p style="font-size: 0.8rem; color: var(--text-secondary);">Règles de filtrage, NAT, Interfaces</p>
-            <div class="skill-bar-container">
-              <div class="skill-bar" style="width: 50%;"></div>
-            </div>
-            <span class="skill-level-text">50% (Débutant/Intermédiaire)</span>
-          </div>
-          
-          <div class="skill-card">
-            <div class="skill-header">
-              <span class="skill-name">Sécurité active</span>
-              <i class="fa-solid fa-mask-ventilator skill-icon" style="font-family:'Font Awesome 6 Free';font-style:normal;"></i>
-            </div>
-            <p style="font-size: 0.8rem; color: var(--text-secondary);">Analyse alertes, détection de comptes compromis, cyberassurance</p>
-            <div class="skill-bar-container">
-              <div class="skill-bar" style="width: 45%;"></div>
-            </div>
-            <span class="skill-level-text">45% (Débutant)</span>
-          </div>
-        </div>
-      </div>
+      <!-- Arbre de compétences (généré en JS) -->
+      <div id="skills-tree" class="skills-tree"></div>
       
       <!-- Rangée 3 : Scripting, Outils & Langues -->
       <div class="others-container">
@@ -347,21 +279,71 @@
 
   <!-- ================================================== -->
   <!-- 6.1 SECTION VEILLE TECHNOLOGIQUE                   -->
-  <!-- ================================================== -->
-  <section id="veille" style="background-color: var(--bg-darker);">
+  <section id="veille">
     <h2 class="section-title">Veille Technologique</h2>
+    <p class="section-subtitle-desc">
+      Suivi de l'évolution des technologies, veille réglementaire et sécurité informatique au travers de sources de référence.
+    </p>
+    
     <div class="veille-container">
+      <!-- Veille 1 -->
       <div class="veille-card">
-        <h3>Cybersécurité</h3>
-        <p>Suivi des nouvelles vulnérabilités et recommandations de l'ANSSI.</p>
+        <div class="veille-card-header">
+          <div class="veille-source-info">
+            <img src="assets/cert_fr.jpg" alt="CERT-FR Logo" class="veille-logo">
+            <span class="veille-date">Juillet 2026</span>
+          </div>
+          <span class="veille-tag tag-cyber"><i class="fa-solid fa-shield-halved"></i> Cybersécurité</span>
+        </div>
+        <div class="veille-card-body">
+          <h3>Actu Cybersécurité CERT-FR</h3>
+          <p>Suivi et analyse des vulnérabilités critiques de contournement d'authentification sur les équipements réseau et VPN de type pare-feu (Fortinet, Palo Alto, Cisco).</p>
+        </div>
+        <div class="veille-card-footer">
+          <a href="https://www.cert.ssi.gouv.fr/" target="_blank" class="veille-link">
+            Consulter le CERT-FR <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
       </div>
+
+      <!-- Veille 2 -->
       <div class="veille-card">
-        <h3>Infrastructure</h3>
-        <p>Évolution des solutions de conteneurisation et virtualisation (Docker/Proxmox).</p>
+        <div class="veille-card-header">
+          <div class="veille-source-info">
+            <img src="assets/OPNsense.png" alt="OPNsense Logo" class="veille-logo">
+            <span class="veille-date">Mai 2026</span>
+          </div>
+          <span class="veille-tag tag-network"><i class="fa-solid fa-route"></i> Réseaux & Pare-feu</span>
+        </div>
+        <div class="veille-card-body">
+          <h3>OPNsense vs pfSense</h3>
+          <p>Comparatif des deux solutions majeures de pare-feu open-source concernant la sécurité, la flexibilité de l'API et la modernité de l'interface d'administration.</p>
+        </div>
+        <div class="veille-card-footer">
+          <a href="https://www.it-connect.fr/" target="_blank" class="veille-link">
+            Lire sur IT-Connect <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
       </div>
+
+      <!-- Veille 3 -->
       <div class="veille-card">
-        <h3>Réseaux</h3>
-        <p>Veille sur les technologies SDN et les nouveaux standards de pare-feu.</p>
+        <div class="veille-card-header">
+          <div class="veille-source-info">
+            <img src="assets/Checkmk.png" alt="Checkmk Logo" class="veille-logo">
+            <span class="veille-date">Avril 2026</span>
+          </div>
+          <span class="veille-tag tag-supervision"><i class="fa-solid fa-eye"></i> Supervision</span>
+        </div>
+        <div class="veille-card-body">
+          <h3>Supervision & VLANs</h3>
+          <p>Veille sur l'évolution de la supervision automatisée des liens trunk et de la découverte des VLANs actifs via SNMP et Checkmk Raw Edition.</p>
+        </div>
+        <div class="veille-card-footer">
+          <a href="https://checkmk.com/" target="_blank" class="veille-link">
+            Découvrir Checkmk <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -374,10 +356,8 @@
       <div class="contact-form-box">
         <h3>Formulaire de Contact</h3>
         
-        <!-- FormSubmit : Service tiers gratuit pour envoyer les soumissions sur email directement -->
-        <!-- Sans captcha pour une meilleure UI, avec redirection intelligente -->
+        <!-- Envoi géré via EmailJS (voir script.js) -->
         <form id="contactForm">
-          <!-- Envoi géré via EmailJS (voir script.js) -->
           
           <div class="form-group">
             <label for="name">Votre Nom / Entreprise</label>
@@ -430,6 +410,7 @@
             <li><a href="#accueil">Accueil</a></li>
             <li><a href="#about">Synopsis (À propos)</a></li>
             <li><a href="#skills">Thématiques (Compétences)</a></li>
+            <li><a href="#veille">Veille Technologique</a></li>
           </ul>
         </div>
         <div class="footer-column">
@@ -449,7 +430,7 @@
       </div>
       
       <div class="footer-bottom">
-        <p>&copy; 2026 Clara EMVOUTOU. Tous droits réservés.</p>
+        <p>&copy; <span id="copyright-year">2026</span> Clara EMVOUTOU. Tous droits réservés.</p>
         <p class="tech-stamp">
           Hébergé sur Netlify
         </p>
@@ -462,7 +443,7 @@
   <!-- ================================================== -->
   <div id="projectModal" class="modal">
     <div class="modal-content">
-      <span class="close-modal" onclick="closeProjectModal()">&times;</span>
+      <span class="close-modal" onclick="closeProjectModal()" aria-label="Fermer la fenêtre">&times;</span>
       
       <!-- Bannière visuelle -->
       <div class="modal-banner">
