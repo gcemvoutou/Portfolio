@@ -62,8 +62,8 @@ const PROJECTS_FALLBACK = [
     "titre": "Portfolio Web (ce site)",
     "categorie": "dev",
     "contexte": "perso",
-    "description": "Portfolio professionnel statique inspiré de la charte graphique de Netflix (noir et bleu). Développé en HTML/CSS/JS et propulsé par Gemini CLI.",
-    "description_detaillee": "Conception et développement de mon site vitrine personnel. Pour donner une touche résolument informatique et orientée technologie, j'ai revisité la charte graphique de Netflix en remplaçant la couleur rouge emblématique par un bleu électrique percutant.\n\nFonctionnalités clés :\n- Interface moderne 100% responsive avec animations fluides.\n- Menu de navigation dynamique (changement d'opacité au défilement).\n- Chargement asynchrone des projets à partir d'un fichier JSON local.\n- Filtrage dynamique des projets sans rechargement de page (via JavaScript).\n- Système de modale de détails ('More Info') inspiré de Netflix pour chaque projet.\n- Formulaire de contact sécurisé connecté à FormSubmit pour recevoir directement les messages par e-mail.\n- Hébergement et déploiement continu sur Netlify.",
+    "description": "Portfolio professionnel statique à l'interface moderne, immersive et épurée (Dark Mode avec accent bleu électrique). Développé en HTML/CSS/JS et propulsé par Gemini CLI.",
+    "description_detaillee": "Conception et développement de mon site vitrine personnel. Pour donner une touche résolument informatique et orientée technologie, le site propose une interface moderne, immersive et épurée (Dark Mode avec accent bleu électrique).\n\nFonctionnalités clés :\n- Interface moderne 100% responsive avec animations fluides.\n- Menu de navigation dynamique (changement d'opacité au défilement).\n- Chargement asynchrone des projets à partir d'un fichier JSON local.\n- Filtrage dynamique des projets sans rechargement de page (via JavaScript).\n- Système de modale de détails interactif ('More Info') pour chaque projet.\n- Formulaire de contact sécurisé connecté à EmailJS pour recevoir directement les messages par e-mail.\n- Hébergement et déploiement continu sur Netlify.",
     "technologies": ["HTML", "CSS", "JavaScript", "JSON", "Gemini CLI", "Netlify"],
     "lien": "#"
   },
@@ -148,7 +148,7 @@ function initMobileMenu() {
   });
 }
 
-// 3. Accordéon FAQ (Style Netflix)
+// 3. Accordéon FAQ interactif
 function initFaqAccordion() {
   const faqItems = document.querySelectorAll('.faq-item');
   
@@ -257,17 +257,6 @@ function renderProjects(projectsToRender) {
       if (project.categorie === 'réseau') categoryIcon = 'fa-shield-halved';
       if (project.categorie === 'dev') categoryIcon = 'fa-code';
       
-      let contextBadgeClass = 'status-badge ';
-      if (project.contexte === 'perso') {
-        contextBadgeClass += 'badge-perso';
-      } else if (project.contexte === 'entreprise') {
-        contextBadgeClass += 'badge-entreprise';
-      } else if (project.contexte === 'scolaire') {
-        contextBadgeClass += 'badge-scolaire';
-      } else {
-        contextBadgeClass += 'badge-gray';
-      }
-      
       let cardThumbnailContent = `<i class="fa-solid ${categoryIcon}"></i>`;
       let cardTitleContent = `<div class="card-title-fallback">${project.titre}</div>`;
       if (project.image) {
@@ -275,6 +264,12 @@ function renderProjects(projectsToRender) {
         cardTitleContent = '';
       }
       
+      const catSlug = (project.categorie || '')
+        .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .trim();
+
       card.innerHTML = `
         <div class="card-thumbnail">
           <div class="card-tech-overlay">
@@ -295,9 +290,8 @@ function renderProjects(projectsToRender) {
           </div>
           <h4 class="project-title">${project.titre}</h4>
           <div class="project-meta">
-            <span class="${contextBadgeClass}">${project.contexte}</span>
             ${project.statut === 'a_venir' ? `<span class="status-badge" style="background-color: rgba(128, 128, 128, 0.15); color: #aaaaaa; border: 1px solid rgba(128, 128, 128, 0.3);">À venir</span>` : ''}
-            <span class="project-category">${project.categorie.toUpperCase()}</span>
+            <span class="project-category category-${catSlug}">${project.categorie.toUpperCase()}</span>
           </div>
           <p class="project-excerpt">${project.description}</p>
           <div class="project-techs">${techSpanList}</div>
@@ -335,7 +329,7 @@ function initFilters() {
   });
 }
 
-// 6. Gestion du Modal "Netflix-Style" (More Info)
+// 6. Gestion de la Modale de Détails (More Info)
 const modal = document.getElementById('projectModal');
 
 function openProjectModal(id) {
@@ -344,7 +338,14 @@ function openProjectModal(id) {
   
   // Remplissage des données du modal
   document.getElementById('modalTitle').innerText = project.titre;
-  document.getElementById('modalCategory').innerHTML = `${project.categorie.toUpperCase()}`;
+  const modalCatSlug = (project.categorie || '')
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .trim();
+  const modalCategoryElem = document.getElementById('modalCategory');
+  modalCategoryElem.className = `modal-category category-${modalCatSlug}`;
+  modalCategoryElem.innerText = project.categorie.toUpperCase();
   
   // Description formatée (conversion des puces markdown en HTML, et \n en <br>)
   let formattedHtml = '';
