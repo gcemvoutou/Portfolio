@@ -88,12 +88,14 @@ me spécialiser en administration systèmes/réseaux ou en cybersécurité.
 ### Projet 1 — Active Directory Lab
 - **Catégorie** : système
 - **Description** : Déploiement complet d'un domaine Windows Server 2022 en lab virtuel.
-  Création d'une arborescence d'UOs, configuration DNS/DHCP, mise en place de GPOs
-  (fond d'écran, restriction panneau de config, déploiement logiciel), scripts PowerShell
-  d'automatisation, profils itinérants.
+  - Déployer un contrôleur de domaine Active Directory (AD DS) et son service DNS
+  - Structurer un annuaire avec des unités d'organisation (OU) et des groupes de sécurité selon le modèle AGDLP
+  - Créer et administrer des comptes utilisateurs (manuellement et via PowerShell)
+  - Joindre un poste client Windows 10 au domaine
+  - Déployer des stratégies de groupe (GPO) : fond d'écran, restrictions, lecteur réseau
+  - Configurer des profils itinérants et des répertoires personnels (lecteurs réseau)
 - **Technologies** : Windows Server 2022, Active Directory, PowerShell, VMware Workstation Pro, DNS, DHCP, GPO
 - **Lien GitHub** : [LIEN GITHUB AD]
-- **Statut** : Terminé — documenté
 
 ---
 
@@ -105,7 +107,6 @@ me spécialiser en administration systèmes/réseaux ou en cybersécurité.
   port forwarding Bouygues. Migration depuis un Pi école vers un Pi personnel via SCP.
 - **Technologies** : Docker, Docker Compose, Nginx Proxy Manager, MariaDB, Let's Encrypt, DuckDNS, Raspberry Pi
 - **Lien GitHub** : [LIEN GITHUB BOOKSTACK]
-- **Statut** : Terminé — documenté
 
 ---
 
@@ -117,7 +118,26 @@ me spécialiser en administration systèmes/réseaux ou en cybersécurité.
   contraintes matérielles.
 - **Technologies** : OPNsense, VirtualBox, Console série, PuTTY, diskpart
 - **Lien GitHub** : [LIEN GITHUB OPNSENSE ou #]
-- **Statut** : En cours — documenté
+
+---
+
+### Projet 6 — Supervision réseau avec CheckMK
+- **Catégorie** : réseau
+- **Description** : CheckMK Raw Edition (CRE) est une solution de supervision réseau open source. Dans le cadre de mon alternance à la Mairie de Saint-Égrève, j'ai été chargée de centraliser et piloter la supervision d'une infrastructure hétérogène répartie sur de nombreux sites distants (Hôtel de Ville, écoles, gymnases, services techniques) afin de :
+  - Garantir la continuité du service public
+  - Anticiper les pannes matérielles ou réseau
+  - Fiabiliser l'inventaire des équipements supervisés
+  À ce jour, 204 hôtes sont enregistrés dans la solution, un chiffre amené à évoluer au fil des mises en production et des retraits de matériel.
+- **Technologies** : CheckMK, CRE, Linux, Supervision, Réseau
+- **Lien GitHub** : https://github.com/gcemvoutou/Checkmk-supervision-mairie
+
+---
+
+### Projet 7 — Projets Cisco Packet Tracer
+- **Catégorie** : réseau
+- **Description** : Ensemble de travaux pratiques réalisés en autonomie sous Cisco Packet Tracer dans le cadre de ma formation BTS SIO SISR. Les projets abordent des thématiques variées : configuration réseau, routage, services DHCP/DNS, interconnexion multi-sites, et bien d'autres à venir au fil de la formation.
+- **Technologies** : Cisco Packet Tracer, Réseau, Routage, DHCP, DNS
+- **Lien GitHub** : https://github.com/gcemvoutou/projets-cisco-packet-tracer
 
 ---
 
@@ -129,7 +149,6 @@ me spécialiser en administration systèmes/réseaux ou en cybersécurité.
   Déployé sur Netlify.
 - **Technologies** : HTML, CSS, JavaScript, JSON, Gemini CLI, Netlify
 - **Lien** : [URL NETLIFY]
-- **Statut** : En cours
 
 ---
 
@@ -139,7 +158,6 @@ me spécialiser en administration systèmes/réseaux ou en cybersécurité.
   Mode DNS uniquement (sans prise en charge du DHCP). Projet planifié.
 - **Technologies** : Pi-hole, Raspberry Pi, DNS
 - **Lien GitHub** : —
-- **Statut** : Prévu
 
 ---
 
