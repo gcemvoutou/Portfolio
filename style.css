@@ -1,23 +1,23 @@
-/* style.css - Charte graphique Netflix revisitée (Noir & Bleu Informatique) */
+/* style.css - Interface moderne (Noir & Bleu Informatique) */
 
 :root {
-  --bg-color: #141414;          /* Noir  */
+  --bg-color: #141414;          /* Noir sombre d'arrière-plan */
   --bg-darker: #0c0c0c;         /* Noir profond pour contrastes */
   --bg-lighter: #1e1e1e;        /* Gris foncé pour cartes/éléments */
-  --bg-modal: #181818;          /* Arrière-plan de la modale  */
+  --bg-modal: #181818;          /* Arrière-plan de la modale */
   --text-color: #ffffff;        /* Blanc de base */
   --text-secondary: #aaaaaa;    /* Gris clair pour textes secondaires */
   --text-muted: #777777;        /* Gris moyen pour textes d'arrière-plan */
   
-  /* Palette de Bleu Électrique (remplace le Rouge ) */
-  --netflix-blue: #0071eb;      /* Bleu principal vif */
-  --netflix-blue-hover: #005fcb;/* Bleu au survol */
-  --netflix-blue-dark: #004094; /* Bleu sombre */
-  --netflix-blue-glow: rgba(0, 113, 235, 0.45);
-  --netflix-blue-transparent: rgba(0, 113, 235, 0.15);
+  /* Palette de Bleu Électrique */
+  --core-blue: #0071eb;      /* Bleu principal vif */
+  --core-blue-hover: #005fcb;/* Bleu au survol */
+  --core-blue-dark: #004094; /* Bleu sombre */
+  --core-blue-glow: rgba(0, 113, 235, 0.45);
+  --core-blue-transparent: rgba(0, 113, 235, 0.15);
   
   /* Status Badges */
-  --success-green: #46d369;     /* Vert d'approbation ( style) */
+  --success-green: #46d369;     /* Vert d'approbation */
   --warning-blue: #00a8ff;      /* Bleu info pour "En cours" */
   --gray-badge: #555555;        /* Gris pour "Prévu" */
   
@@ -76,7 +76,7 @@ button, input, textarea {
   border: 2px solid var(--bg-color);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--netflix-blue);
+  background: var(--core-blue);
 }
 
 /* Sections Global */
@@ -102,9 +102,9 @@ section {
   bottom: -6px;
   width: 45px;
   height: 4px;
-  background-color: var(--netflix-blue);
+  background-color: var(--core-blue);
   border-radius: 2px;
-  box-shadow: 0 0 10px var(--netflix-blue-glow);
+  box-shadow: 0 0 10px var(--core-blue-glow);
 }
 
 .navbar {
@@ -128,13 +128,13 @@ section {
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Logo type Netflix en Bleu */
+/* Logo en Bleu */
 .logo {
   font-family: var(--font-headings);
   font-size: 1.8rem;
   font-weight: 800;
   letter-spacing: -1px;
-  color: var(--netflix-blue);
+  color: var(--core-blue);
   text-shadow: 0 0 15px rgba(0, 113, 235, 0.5);
   transform: scaleY(0.95);
   display: inline-block;
@@ -167,7 +167,7 @@ section {
   left: 0;
   width: 0;
   height: 2px;
-  background-color: var(--netflix-blue);
+  background-color: var(--core-blue);
   transition: var(--transition-fast);
 }
 
@@ -182,9 +182,9 @@ section {
   gap: 15px;
 }
 
-/* Bouton CV de style bouton Profil Netflix */
+/* Bouton CV de style bouton Profil */
 .cv-btn {
-  background-color: var(--netflix-blue);
+  background-color: var(--core-blue);
   color: var(--text-color);
   padding: 7px 17px;
   border-radius: 4px;
@@ -199,8 +199,8 @@ section {
 }
 
 .cv-btn:hover {
-  background-color: var(--netflix-blue-hover);
-  box-shadow: 0 0 15px var(--netflix-blue-glow);
+  background-color: var(--core-blue-hover);
+  box-shadow: 0 0 15px var(--core-blue-glow);
   transform: translateY(-1px);
 }
 
@@ -223,7 +223,7 @@ section {
 }
 
 /* -------------------------------------------------- */
-/* 3. Hero Section (Billboard Netflix)                */
+/* 3. Hero Section (Bannière d'accueil)               */
 /* -------------------------------------------------- */
 .hero {
   height: 85vh;
@@ -267,7 +267,7 @@ section {
   font-size: 0.85rem;
   font-weight: 700;
   text-transform: uppercase;
-  color: var(--netflix-blue);
+  color: var(--core-blue);
   margin-bottom: 15px;
   letter-spacing: 2px;
 }
@@ -298,7 +298,7 @@ section {
 }
 
 .hero-subtitle .highlight {
-  color: var(--netflix-blue);
+  color: var(--core-blue);
   font-weight: 700;
 }
 
@@ -316,7 +316,7 @@ section {
   flex-wrap: wrap;
 }
 
-/* Bouton Play-style (Blanc opaque) */
+/* Bouton d'action principal de style interactif (Blanc opaque) */
 .btn-play {
   background-color: var(--text-color);
   color: #000000;
@@ -356,8 +356,8 @@ section {
 
 .btn-info:hover {
   background-color: rgba(109, 109, 110, 0.4);
-  border: 1px solid var(--netflix-blue);
-  box-shadow: 0 0 10px var(--netflix-blue-glow);
+  border: 1px solid var(--core-blue);
+  box-shadow: 0 0 10px var(--core-blue-glow);
   transform: scale(1.03);
 }
 
@@ -371,7 +371,7 @@ section {
   align-items: start;
 }
 
-/* Affiche Netflix Style */
+/* Affiche / Carte de présentation */
 .about-poster-wrapper {
   position: relative;
   width: 100%;
@@ -388,8 +388,8 @@ section {
 .about-poster-wrapper:hover {
   transform: translateY(-5px);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9),
-              0 0 15px var(--netflix-blue-glow);
-  border-color: var(--netflix-blue);
+              0 0 15px var(--core-blue-glow);
+  border-color: var(--core-blue);
 }
 
 .about-poster {
@@ -454,7 +454,7 @@ section {
 
 .about-detail-card {
   background-color: var(--bg-lighter);
-  border-left: 3px solid var(--netflix-blue);
+  border-left: 3px solid var(--core-blue);
   padding: 15px 20px;
   border-radius: 0 6px 6px 0;
 }
@@ -462,7 +462,7 @@ section {
 .about-detail-card h4 {
   font-size: 0.8rem;
   text-transform: uppercase;
-  color: var(--netflix-blue);
+  color: var(--core-blue);
   margin-bottom: 5px;
   letter-spacing: 1px;
 }
@@ -500,7 +500,7 @@ section {
 }
 
 .skills-row-title i {
-  color: var(--netflix-blue);
+  color: var(--core-blue);
   font-size: 1.1rem;
 }
 
@@ -536,7 +536,7 @@ section {
 
 .skill-icon {
   font-size: 1.5rem;
-  color: var(--netflix-blue);
+  color: var(--core-blue);
 }
 
 .skill-name {
@@ -556,9 +556,9 @@ section {
 
 .skill-bar {
   height: 100%;
-  background: linear-gradient(90deg, var(--netflix-blue-dark), var(--netflix-blue));
+  background: linear-gradient(90deg, var(--core-blue-dark), var(--core-blue));
   border-radius: 3px;
-  box-shadow: 0 0 8px var(--netflix-blue-glow);
+  box-shadow: 0 0 8px var(--core-blue-glow);
   width: 0; /* Animé en CSS ou fixé par attribut style */
   transition: width 1.5s ease-in-out;
 }
@@ -592,7 +592,7 @@ section {
 
 .skill-card:hover .skill-tags span {
   color: #ffffff;
-  border-color: var(--netflix-blue);
+  border-color: var(--core-blue);
   background-color: rgba(0, 113, 235, 0.15);
 }
 
@@ -662,8 +662,8 @@ section {
 }
 
 .tool-tag:hover {
-  background-color: var(--netflix-blue-transparent);
-  border-color: var(--netflix-blue);
+  background-color: var(--core-blue-transparent);
+  border-color: var(--core-blue);
   color: #ffffff;
   transform: translateY(-2px);
 }
@@ -678,7 +678,7 @@ section {
   margin-bottom: 35px;
 }
 
-/* Boutons de Filtre genre Netflix */
+/* Boutons de Filtre */
 .filter-container {
   display: flex;
   flex-wrap: wrap;
@@ -704,10 +704,10 @@ section {
 }
 
 .filter-btn.active {
-  background-color: var(--netflix-blue);
-  border-color: var(--netflix-blue);
+  background-color: var(--core-blue);
+  border-color: var(--core-blue);
   color: #ffffff;
-  box-shadow: 0 0 12px var(--netflix-blue-glow);
+  box-shadow: 0 0 12px var(--core-blue-glow);
 }
 
 /* Grille de projets */
@@ -735,8 +735,8 @@ section {
 }
 
 .projects-group-title i {
-  color: var(--netflix-blue);
-  text-shadow: 0 0 10px var(--netflix-blue-glow);
+  color: var(--core-blue);
+  text-shadow: 0 0 10px var(--core-blue-glow);
 }
 
 .projects-group-grid {
@@ -753,7 +753,7 @@ section {
   font-size: 1.1rem;
 }
 
-/* Projet Card - Version Netflix high-end */
+/* Projet Card - Version moderne épurée */
 .project-card {
   background-color: var(--bg-darker);
   border-radius: 6px;
@@ -767,7 +767,7 @@ section {
   border: 1px solid rgba(255, 255, 255, 0.02);
 }
 
-/* Thumbnail Netflix */
+/* Thumbnail Projet */
 .card-thumbnail {
   width: 100%;
   height: 180px;
@@ -844,6 +844,7 @@ section {
   transform: scale(1.15);
 }
 
+/* Bouton d'action principal de style interactif */
 .play-btn {
   background-color: #ffffff;
   color: #000000;
@@ -896,9 +897,50 @@ section {
   border: 1px solid rgba(138, 43, 226, 0.3);
 }
 
+/* Badges de Catégories de Projets (Standards Tech) */
 .project-category {
-  color: var(--netflix-blue);
   font-weight: 700;
+  font-size: 0.72rem;
+  padding: 3px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid transparent;
+  line-height: 1.2;
+}
+
+/* 1. Système : Gris ardoise (#475569) */
+.category-systeme,
+.category-système {
+  background-color: rgba(71, 85, 105, 0.25);
+  color: #cbd5e1;
+  border-color: #475569;
+}
+
+/* 2. Infrastructure : Orange / Ambre (#D97706) */
+.category-infrastructure {
+  background-color: rgba(217, 119, 6, 0.2);
+  color: #fbbf24;
+  border-color: #D97706;
+}
+
+/* 3. Réseau : Bleu électrique (#2563EB) */
+.category-reseau,
+.category-réseau {
+  background-color: rgba(37, 99, 235, 0.2);
+  color: #60a5fa;
+  border-color: #2563EB;
+}
+
+/* 4. Développement : Vert émeraude (#10B981) */
+.category-dev,
+.category-developpement,
+.category-développement {
+  background-color: rgba(16, 185, 129, 0.2);
+  color: #34d399;
+  border-color: #10B981;
 }
 
 .project-excerpt {
@@ -917,26 +959,27 @@ section {
   margin-top: 5px;
 }
 
-/* Zoom Hover Effect Netflix */
+/* Zoom Hover Effect */
 .project-card:hover {
   transform: translateY(-8px) scale(1.03);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.7),
-              0 0 15px var(--netflix-blue-glow);
-  border-color: var(--netflix-blue);
+              0 0 15px var(--core-blue-glow);
+  border-color: var(--core-blue);
   z-index: 5;
 }
 
 .project-card:hover .card-tech-overlay {
-  color: var(--netflix-blue-transparent);
+  color: var(--core-blue-transparent);
   transform: scale(1.2);
 }
 
 /* -------------------------------------------------- */
-/* 7. FAQ Section (Accordéon Netflix)                 */
+/* 7. FAQ Section (Accordéon interactif)              */
 /* -------------------------------------------------- */
 .faq-container {
   max-width: 850px;
-  margin: 0 auto;
+  margin-left: 0;
+  margin-right: auto;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -1038,9 +1081,9 @@ section {
 
 .veille-card:hover {
   transform: translateY(-8px) scale(1.02);
-  border-color: var(--netflix-blue);
+  border-color: var(--core-blue);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6),
-              0 0 15px var(--netflix-blue-glow);
+              0 0 15px var(--core-blue-glow);
 }
 
 .veille-card-header {
@@ -1122,7 +1165,7 @@ section {
 }
 
 .veille-card:hover .veille-card-body h3 {
-  color: var(--netflix-blue);
+  color: var(--core-blue);
 }
 
 .veille-card-body p {
@@ -1152,7 +1195,7 @@ section {
 }
 
 .veille-link:hover {
-  color: var(--netflix-blue);
+  color: var(--core-blue);
 }
 
 .veille-link:hover i {
@@ -1167,7 +1210,7 @@ section {
   margin: 0 auto;
 }
 
-/* Formulaire Box style Page de Connexion Netflix */
+/* Formulaire Box de Contact */
 .contact-form-box {
   background-color: rgba(0, 0, 0, 0.75);
   border-radius: 8px;
@@ -1185,8 +1228,8 @@ section {
   left: 0;
   width: 100%;
   height: 4px;
-  background-color: var(--netflix-blue);
-  box-shadow: 0 0 15px var(--netflix-blue-glow);
+  background-color: var(--core-blue);
+  box-shadow: 0 0 15px var(--core-blue-glow);
 }
 
 .contact-form-box h3 {
@@ -1217,7 +1260,7 @@ section {
 .form-input:focus {
   outline: none;
   background-color: #454545;
-  border-bottom-color: var(--netflix-blue);
+  border-bottom-color: var(--core-blue);
   box-shadow: 0 4px 10px rgba(0, 113, 235, 0.1);
 }
 
@@ -1237,7 +1280,7 @@ textarea.form-input {
 /* Bouton Soumettre */
 .btn-submit {
   width: 100%;
-  background-color: var(--netflix-blue);
+  background-color: var(--core-blue);
   color: #ffffff;
   padding: 14px;
   border: none;
@@ -1246,13 +1289,13 @@ textarea.form-input {
   font-weight: 700;
   cursor: pointer;
   transition: var(--transition-fast);
-  box-shadow: 0 4px 15px var(--netflix-blue-glow);
+  box-shadow: 0 4px 15px var(--core-blue-glow);
   margin-top: 10px;
 }
 
 .btn-submit:hover {
-  background-color: var(--netflix-blue-hover);
-  box-shadow: 0 0 20px var(--netflix-blue-glow);
+  background-color: var(--core-blue-hover);
+  box-shadow: 0 0 20px var(--core-blue-glow);
   transform: translateY(-1px);
 }
 
@@ -1300,7 +1343,7 @@ textarea.form-input {
 }
 
 .contact-note a {
-  color: var(--netflix-blue);
+  color: var(--core-blue);
 }
 
 .contact-note a:hover {
@@ -1346,7 +1389,7 @@ textarea.form-input {
 }
 
 .footer-column ul li a:hover {
-  color: var(--netflix-blue);
+  color: var(--core-blue);
   text-decoration: underline;
 }
 
@@ -1372,9 +1415,9 @@ textarea.form-input {
 }
 
 .social-icon:hover {
-  background-color: var(--netflix-blue);
+  background-color: var(--core-blue);
   color: #ffffff;
-  box-shadow: 0 0 10px var(--netflix-blue-glow);
+  box-shadow: 0 0 10px var(--core-blue-glow);
   transform: translateY(-2px);
 }
 
@@ -1394,7 +1437,7 @@ textarea.form-input {
 }
 
 /* -------------------------------------------------- */
-/* 10. Modale Details (Style Overlay Netflix)        */
+/* 10. Modale Details (Style Overlay)                */
 /* -------------------------------------------------- */
 .modal {
   display: none;
@@ -1456,7 +1499,7 @@ textarea.form-input {
 
 .close-modal:hover {
   background-color: rgba(20, 20, 20, 0.9);
-  color: var(--netflix-blue);
+  color: var(--core-blue);
   transform: scale(1.1);
 }
 
@@ -1468,7 +1511,7 @@ textarea.form-input {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: 3px solid var(--netflix-blue);
+  border-bottom: 3px solid var(--core-blue);
 }
 
 .modal-banner-icon {
@@ -1526,9 +1569,15 @@ textarea.form-input {
 }
 
 .modal-category {
-  color: var(--netflix-blue);
   font-weight: 700;
-  letter-spacing: 1px;
+  font-size: 0.78rem;
+  padding: 4px 10px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid transparent;
 }
 
 .modal-grid-layout {
@@ -1587,7 +1636,7 @@ textarea.form-input {
 }
 
 .btn-primary {
-  background-color: var(--netflix-blue);
+  background-color: var(--core-blue);
   color: #ffffff;
   padding: 10px 20px;
   border-radius: 4px;
@@ -1600,12 +1649,12 @@ textarea.form-input {
   border: none;
   cursor: pointer;
   transition: var(--transition-fast);
-  box-shadow: 0 4px 12px var(--netflix-blue-glow);
+  box-shadow: 0 4px 12px var(--core-blue-glow);
 }
 
 .btn-primary:hover {
-  background-color: var(--netflix-blue-hover);
-  box-shadow: 0 0 15px var(--netflix-blue-glow);
+  background-color: var(--core-blue-hover);
+  box-shadow: 0 0 15px var(--core-blue-glow);
   transform: translateY(-1px);
 }
 
@@ -1630,15 +1679,15 @@ textarea.form-input {
 /* -------------------------------------------------- */
 @keyframes pulse-glow {
   0% {
-    text-shadow: 0 0 5px var(--netflix-blue-glow);
+    text-shadow: 0 0 5px var(--core-blue-glow);
     opacity: 0.8;
   }
   50% {
-    text-shadow: 0 0 15px var(--netflix-blue), 0 0 25px var(--netflix-blue);
+    text-shadow: 0 0 15px var(--core-blue), 0 0 25px var(--core-blue);
     opacity: 1;
   }
   100% {
-    text-shadow: 0 0 5px var(--netflix-blue-glow);
+    text-shadow: 0 0 5px var(--core-blue-glow);
     opacity: 0.8;
   }
 }
@@ -1810,21 +1859,19 @@ textarea.form-input {
 /* ================================================== */
 
 .skills-tree {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 20px;
-  align-items: start;
-  max-width: 1200px;
-  margin: 0 auto 40px auto;
-}
-
-@media (max-width: 768px) {
-  .skills-tree {
-    grid-template-columns: 1fr;
-  }
+  align-items: flex-start;
+  max-width: 850px;
+  margin-left: 0;
+  margin-right: auto;
+  margin-bottom: 40px;
+  width: 100%;
 }
 
 .tree-category-wrapper {
+  width: 100%;
   background-color: var(--bg-lighter);
   border: 1px solid rgba(255, 255, 255, 0.03);
   border-radius: 8px;
@@ -1856,11 +1903,11 @@ textarea.form-input {
 
 .tree-category-btn:hover, .tree-category-btn:focus-visible {
   background-color: rgba(255, 255, 255, 0.02);
-  color: var(--netflix-blue);
+  color: var(--core-blue);
 }
 
 .tree-category-btn:focus-visible {
-  outline: 2px solid var(--netflix-blue);
+  outline: 2px solid var(--core-blue);
 }
 
 .tree-title-wrapper {
@@ -1870,8 +1917,8 @@ textarea.form-input {
 }
 
 .tree-icon {
-  color: var(--netflix-blue);
-  text-shadow: 0 0 10px var(--netflix-blue-glow);
+  color: var(--core-blue);
+  text-shadow: 0 0 10px var(--core-blue-glow);
   font-size: 1.25rem;
   width: 20px;
   text-align: center;
@@ -1969,11 +2016,11 @@ button[aria-expanded="true"] .tree-chevron-sub {
 }
 
 .tree-subtheme-btn:focus-visible {
-  outline: 2px solid var(--netflix-blue);
+  outline: 2px solid var(--core-blue);
 }
 
 .tree-icon-sub {
-  color: var(--netflix-blue);
+  color: var(--core-blue);
   font-size: 1.05rem;
   width: 18px;
   text-align: center;
@@ -2019,10 +2066,10 @@ button[aria-expanded="true"] .tree-chevron-sub {
 
 .staggered-tag:hover {
   color: #ffffff;
-  border-color: var(--netflix-blue);
+  border-color: var(--core-blue);
   background-color: rgba(0, 113, 235, 0.18);
   transform: translateY(-2px) !important;
-  box-shadow: 0 2px 8px var(--netflix-blue-glow);
+  box-shadow: 0 2px 8px var(--core-blue-glow);
 }
 
 /* Ajustements responsive de l'indendation */
