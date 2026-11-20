@@ -10,12 +10,14 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Portfolio — Clara EMVOUTOU — BTS SIO SISR">
   <meta property="og:description" content="Découvrez mes compétences et projets en administration systèmes, réseaux et cybersécurité.">
-  <meta property="og:image" content="https://amazing-eclair-6a2c91.netlify.app/assets/photo.jpg">
-  <meta property="og:url" content="https://amazing-eclair-6a2c91.netlify.app/">
+  <meta property="og:image" content="https://clara-emvoutou-portfolio.netlify.app/assets/photo.jpg">
+  <meta property="og:url" content="https://clara-emvoutou-portfolio.netlify.app/">
   <meta name="twitter:card" content="summary_large_image">
   
   <!-- Favicon -->
-  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   
   <!-- Fonts Google : Inter pour la lisibilité et Space Grotesk pour les titres techniques -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -54,11 +56,11 @@
       <a href="assets/cv.pdf" download="CV_Clara EMVOUTOU.pdf" class="cv-btn">
         <i class="fa-solid fa-download"></i> Télécharger CV
       </a>
-      <div class="burger-menu" aria-label="Menu de navigation">
+      <button type="button" class="burger-menu" aria-label="Ouvrir le menu de navigation" aria-expanded="false">
         <span></span>
         <span></span>
         <span></span>
-      </div>
+      </button>
     </div>
   </header>
 
@@ -68,7 +70,7 @@
   <section id="accueil" class="hero">
     <div class="hero-content">
       <div class="hero-badge">
-        <i class="fa-solid fa-bolt"></i> Recommandé pour vous
+        <i class="fa-solid fa-graduation-cap"></i> Recherche une alternance en école d'ingénieurs — rentrée 2027
       </div>
       <h1 class="hero-title">Clara EMVOUTOU</h1>
       <div class="hero-subtitle">
@@ -89,23 +91,39 @@
         </a>
       </div>
     </div>
+
+    <!-- Terminal animé + projet à la une (masqués sur mobile) -->
+    <div class="hero-side" aria-hidden="false">
+      <div class="hero-terminal" role="img" aria-label="Terminal : présentation de Clara EMVOUTOU">
+        <div class="terminal-bar">
+          <span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span>
+          <span class="terminal-title">clara@portfolio: ~</span>
+        </div>
+        <div id="terminal-body" class="terminal-body"></div>
+      </div>
+      <button class="featured-project" onclick="openProjectModal(12)">
+        <span class="featured-label"><i class="fa-solid fa-star"></i> Projet à la une</span>
+        <span class="featured-title">IPAM / DCIM avec NetBox</span>
+        <span class="featured-desc">Déploiement en production de la source de vérité du réseau</span>
+        <span class="featured-link">Voir le projet <i class="fa-solid fa-arrow-right"></i></span>
+      </button>
+    </div>
   </section>
 
   <!-- ================================================== -->
   <!-- 3. SECTION À PROPOS (LE SYNOPSIS)                  -->
   <!-- ================================================== -->
   <section id="about">
-    <h2 class="section-title">Le Synopsis</h2>
+    <h2 class="section-title">À propos</h2>
     <div class="about-container">
       <!-- Carte / Affiche de présentation -->
       <div class="about-poster-wrapper">
         <img src="assets/photo.jpg" alt="Photo de Clara EMVOUTOU" class="about-poster">
-        <div class="poster-meta">
-          <div class="poster-tag">100% Compatibilité</div>
+        <div class="poster-meta">          
           <div class="poster-stats">
             <span>SISR-2</span>
             <span>2026 - 2027</span>
-            <span>Saison 2</span>
+            
           </div>
         </div>
       </div>
@@ -137,7 +155,7 @@
           <div class="about-detail-card">
             <h4>Diplôme antérieur</h4>
             <p>Baccalauréat ST2S</p>
-            <span>Secteur médico-social réorienté</span>
+            <span>Reconversion vers l'informatique</span>
           </div>
         </div>
       </div>
@@ -148,7 +166,7 @@
   <!-- 4. SECTION COMPÉTENCES (LES THÉMATIQUES)            -->
   <!-- ================================================== -->
   <section id="skills" style="background-color: var(--bg-darker);">
-    <h2 class="section-title">Les Thématiques Clés</h2>
+    <h2 class="section-title">Compétences</h2>
     
     <div class="skills-container">
       
@@ -199,7 +217,7 @@
   <!-- 5. SECTION PROJETS (LES SÉRIES / ÉPISODES)         -->
   <!-- ================================================== -->
   <section id="projects">
-    <h2 class="section-title">Les Séries de Projets</h2>
+    <h2 class="section-title">Projets</h2>
     
     <div class="projects-header-controls">
       <!-- Filtres type catégories de genre -->
@@ -208,7 +226,6 @@
         <button class="filter-btn" data-filter="système">Système</button>
         <button class="filter-btn" data-filter="infrastructure">Infrastructure</button>
         <button class="filter-btn" data-filter="réseau">Réseau</button>
-        <button class="filter-btn" data-filter="dev">Développement</button>
       </div>
     </div>
     
@@ -222,7 +239,7 @@
   <!-- 6. SECTION QUESTIONS FRÉQUENTES (FAQ)             -->
   <!-- ================================================== -->
   <section id="faq" style="background-color: var(--bg-darker);">
-    <h2 class="section-title">Questions</h2>
+    <h2 class="section-title">FAQ</h2>
     
     <div class="faq-container">
       
@@ -233,7 +250,7 @@
         </div>
         <div class="faq-answer">
           <div class="faq-answer-inner" style="padding: 30px; line-height: 1.8; text-align: justify;">
-            Mon rythme d'alternance est de <strong>1 semaine en entreprise</strong> (Mairie de Saint-Égrève) et <strong>1 semaine au CFP Charmilles</strong>. Ce rythme alterné permet un excellent équilibre entre l'acquisition des compétences théoriques au CFP et leur mise en pratique directe au service de la collectivité.
+            Mon rythme d'alternance est de <strong>1 semaine en entreprise</strong> (Mairie de Saint-Égrève) et <strong>1 semaine au CFP Charmilles</strong>.
           </div>
         </div>
       </div>
@@ -257,7 +274,7 @@
         </div>
         <div class="faq-answer">
           <div class="faq-answer-inner">
-            Après l'obtention de mon BTS SISR en 2027, je vise une poursuite d'études en <strong>école d'ingénieurs</strong> (en alternance de préférence) pour me spécialiser dans l'administration avancée des systèmes et réseaux complexes, le cloud, ou dans le secteur stratégique de la <strong>cybersécurité</strong>.
+            Après l'obtention de mon BTS SISR en 2027, je vise une poursuite d'études en <strong>école d'ingénieurs</strong>  avec pour objectif de me spécialiser dans le domaine de la <strong>cybersécurité</strong>, notamment dans la sécurisation des infrastructures, la protection des systèmes d'information et la gestion des risques informatiques..
           </div>
         </div>
       </div>
@@ -290,7 +307,7 @@
       <div class="veille-card">
         <div class="veille-card-header">
           <div class="veille-source-info">
-            <img src="assets/cert_fr.jpg" alt="CERT-FR Logo" class="veille-logo">
+            <div class="veille-logo" style="display:flex;align-items:center;justify-content:center;color:var(--core-blue);font-size:1.6rem;"><i class="fa-solid fa-shield-halved"></i></div>
             <span class="veille-date">Juillet 2026</span>
           </div>
           <span class="veille-tag tag-cyber"><i class="fa-solid fa-shield-halved"></i> Cybersécurité</span>
@@ -408,13 +425,13 @@
           <h5>Navigation</h5>
           <ul>
             <li><a href="#accueil">Accueil</a></li>
-            <li><a href="#about">Synopsis (À propos)</a></li>
-            <li><a href="#skills">Thématiques (Compétences)</a></li>
+            <li><a href="#about">À propos</a></li>
+            <li><a href="#skills">Compétences</a></li>
             <li><a href="#veille">Veille Technologique</a></li>
           </ul>
         </div>
         <div class="footer-column">
-          <h5>Partenaires</h5>
+          <h5>Parcours</h5>
           <ul>
             <li><a href="https://www.les-charmilles.fr/" target="_blank">CFP Charmilles</a></li>
             <li><a href="https://www.ville-st-egreve.fr/" target="_blank">Mairie de Saint-Égrève</a></li>
