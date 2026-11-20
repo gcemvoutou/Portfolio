@@ -453,7 +453,7 @@ const SKILLS_DATA = [
       {
         name: "Routage & Commutation",
         icon: "fa-solid fa-network-wired",
-        tags: ["VLAN", "Adressage IP", "Switchs Aruba", "Routage"]
+        tags: ["VLAN", "Adressage IP", "Switchs manageables", "Routage"]
       },
       {
         name: "IPAM / DCIM",
