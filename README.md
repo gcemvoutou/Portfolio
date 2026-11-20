@@ -2,10 +2,6 @@
 
 🔗 **Site en ligne :** [clara-emvoutou-portfolio.netlify.app](https://clara-emvoutou-portfolio.netlify.app)
 
-Portfolio professionnel de **Gwen-Clara EMVOUTOU**, apprentie systèmes et réseaux en BTS SIO option SISR, en alternance à la DSI de la Mairie de Saint-Égrève (Isère).
-
-Je recherche un **contrat d'apprentissage en cycle ingénieur (cybersécurité, systèmes et réseaux)** à partir de **septembre 2027**.
-
 ## Ce que contient le site
 
 - **Projets** : réalisations en entreprise et projets personnels (IPAM NetBox, supervision CheckMK, serveur DHCP en haute disponibilité, BookStack auto-hébergé…), chacun relié à sa documentation sur GitHub
