@@ -1,30 +1,129 @@
-## Objectif
+[
+  {
+    "id": 1,
+    "titre": "Active Directory Lab",
+    "categorie": "système",
+    "contexte": "perso",
+    "description": "Déploiement complet d'un domaine Windows Server 2022 en lab virtuel. Création d'une arborescence d'UOs, configuration DNS/DHCP, mise en place de GPOs, scripts PowerShell d'automatisation et profils itinérants.",
+    "description_detaillee": "Ce projet de laboratoire m'a permis d'acquérir une compréhension approfondie de l'administration d'un parc informatique d'entreprise sous Windows Server 2022.\n\n- Déployer un contrôleur de domaine Active Directory (AD DS) et son service DNS\n- Structurer un annuaire avec des unités d'organisation (OU) et des groupes de sécurité selon le modèle AGDLP\n- Créer et administrer des comptes utilisateurs (manuellement et via PowerShell)\n- Joindre un poste client Windows 10 au domaine\n- Déployer des stratégies de groupe (GPO) : fond d'écran, restrictions, lecteur réseau\n- Configurer des profils itinérants et des répertoires personnels (lecteurs réseau)",
+    "technologies": ["Windows Server 2022", "Active Directory", "PowerShell", "VMware Workstation Pro", "DNS", "DHCP", "GPO"],
+    "image": "assets/vignettes/active-directory.png",
+    "lien": "https://github.com/gcemvoutou/lab-active-directory-sisr"
+  },
+  {
+    "id": 2,
+    "titre": "BookStack sur Raspberry Pi",
+    "categorie": "infrastructure",
+    "contexte": "perso",
+    "description": "Déploiement d'un wiki auto-hébergé sur Raspberry Pi 4 avec Docker Compose. Stack : BookStack + MariaDB + Nginx Proxy Manager + Let's Encrypt SSL. Accessible via bookstack-clara.duckdns.org.",
+    "description_detaillee": "Mise en place d'une plateforme de base de connaissances (Wiki) personnelle pour centraliser mes documentations et procédures techniques.\n\nCe projet d'infrastructure comprend :\n\n- Le déploiement de la stack BookStack, MariaDB, et Nginx Proxy Manager via Docker Compose.\n\n- La configuration de Nginx Proxy Manager en tant que Reverse Proxy pour sécuriser les échanges avec un certificat SSL Let's Encrypt gratuit.\n\n- L'attribution d'un nom de domaine gratuit via le service de DNS dynamique DuckDNS.\n\n- La redirection sécurisée des ports (port forwarding) sur une box Bouygues Telecom.\n\n- La résolution d'erreurs d'initialisation de base de données (MariaDB troubleshooting) et la migration de la configuration depuis un Raspberry Pi de l'école vers un Raspberry Pi personnel en utilisant des commandes sécurisées SCP.",
+    "technologies": ["Docker", "Docker Compose", "Nginx Proxy Manager", "MariaDB", "Let's Encrypt", "DuckDNS", "Raspberry Pi"],
+    "image": "assets/vignettes/bookstack.png",
+    "lien": "https://github.com/gcemvoutou/Cr-er-un-Serveur-Bookstak-sur-Raspberry-Pi-4/tree/main"
+  },
+  {
+    "id": 3,
+    "titre": "Pare-feu OPNsense",
+    "categorie": "réseau",
+    "contexte": "scolaire",
+    "description": "Installation et configuration complète d'un pare-feu OPNsense sur appliance Riverbed. Inclut la préparation (Rufus, console), l'installation (ZFS), et la sécurisation avancée (HTTPS, filtrage, NAT).",
+    "description_detaillee": "Ce projet pratique consistait à transformer une appliance réseau Riverbed en un pare-feu opérationnel via la distribution open-source OPNsense.\n\nLe projet s'est articulé autour de deux volets :\n\n- **Volet 1 : Installation et configuration initiale**\n  - Préparation d'une clé USB bootable.\n  - Accès console (PuTTY, 115200 bauds).\n  - Installation du système (ZFS, GPT/UEFI).\n  - Assignation des interfaces WAN (DHCP) et LAN (statique 192.168.6.254/24).\n\n- **Volet 2 : Sécurisation et configuration avancée**\n  - Sécurisation de l'accès à l'interface d'administration via HTTPS (certificat auto-signé).\n  - Mise en place des règles de filtrage (Firewall Rules) pour autoriser le trafic LAN vers WAN.\n  - Configuration du NAT sortant (Outbound NAT) pour permettre l'accès à internet.\n  - Vérification du trafic via les logs en temps réel (Live View).",
+    "technologies": ["OPNsense", "FreeBSD", "Riverbed", "PuTTY", "Rufus", "HTTPS", "NAT"],
+    "image": "assets/vignettes/opnsense.png",
+    "lien": "https://github.com/gcemvoutou/OPNsense_Riverbed.git"
+  },
+  {
+    "id": 12,
+    "titre": "IPAM / DCIM avec NetBox",
+    "categorie": "réseau",
+    "contexte": "entreprise",
+    "description": "Déploiement de NetBox en production pour en faire la source de vérité du réseau : installation native, HTTPS, sauvegardes, droits par moindre privilège et alimentation des données IPAM et DCIM.",
+    "description_detaillee": "Dans le cadre de mon alternance à la Mairie de Saint-Égrève, j'ai mené le déploiement de NetBox, de l'installation du serveur jusqu'à l'alimentation des données.\n\nLes adresses IP fixes étaient dispersées dans de nombreuses sources parfois contradictoires (tableurs, supervision, wiki, pare-feu), sans vue unique des IP libres. L'objectif : faire de NetBox la source de vérité de l'équipe, avec une règle simple : tout ce qui a une IP fixe doit être dans NetBox.\n\nCe projet comprend :\n\n- L'installation native (sans Docker) sur Ubuntu Server 24.04 LTS : PostgreSQL, Redis, NetBox v4.7.3, Gunicorn et Nginx, avec un choix de version guidé par les correctifs de sécurité.\n- La mise en production en HTTPS avec le certificat wildcard de la collectivité et une redirection HTTP vers HTTPS.\n- Les sauvegardes automatiques de la base (pg_dump, cron, rétention de 14 jours) et un test de restauration.\n- La supervision du serveur par l'agent CheckMK.\n- La gestion des comptes nominatifs et des autorisations selon le principe du moindre privilège.\n- La structuration de l'IPAM (VLAN, préfixes, plages DHCP) et du DCIM (sites, localisations, rôles, types d'appareils).\n- L'alimentation des données par import CSV, après croisement et validation des sources : une quarantaine de sites et environ 150 équipements.",
+    "technologies": ["NetBox", "IPAM", "DCIM", "Ubuntu Server", "PostgreSQL", "Nginx", "HTTPS / TLS"],
+    "image": "assets/vignettes/netbox.png",
+    "lien": "https://github.com/gcemvoutou/netbox-ipam-dcim"
+  },
+  {
+    "id": 6,
+    "titre": "Supervision avec CheckMK",
+    "categorie": "réseau",
+    "contexte": "entreprise",
+    "description": "Supervision d'une infrastructure hétérogène de 204 hôtes répartis sur les sites distants de mon entreprise avec CheckMK Raw Edition (CRE).",
+    "description_detaillee": "CheckMK Raw Edition (CRE) est une solution de supervision réseau open source. Dans le cadre de mon alternance à la Mairie de Saint-Égrève, j'ai été chargée de centraliser et piloter la supervision d'une infrastructure hétérogène répartie sur de nombreux sites distants (Hôtel de Ville, écoles, gymnases, services techniques) afin de :\n\n- Garantir la continuité du service public\n- Anticiper les pannes matérielles ou réseau\n- Fiabiliser l'inventaire des équipements supervisés\n\nÀ ce jour, 204 hôtes sont enregistrés dans la solution, un chiffre amené à évoluer au fil des mises en production et des retraits de matériel.",
+    "technologies": ["CheckMK", "CRE", "Linux", "Supervision", "Réseau"],
+    "image": "assets/vignettes/checkmk.png",
+    "lien": "https://github.com/gcemvoutou/Checkmk-supervision-mairie"
+  },
+  {
+    "id": 7,
+    "titre": "Projets Cisco Packet Tracer",
+    "categorie": "réseau",
+    "contexte": "scolaire",
+    "description": "Ensemble de travaux pratiques réseau (routage, DHCP, DNS, interconnexion multi-sites) réalisés sous Cisco Packet Tracer dans le cadre du BTS SIO SISR.",
+    "description_detaillee": "Ensemble de travaux pratiques réalisés en autonomie sous Cisco Packet Tracer dans le cadre de ma formation BTS SIO SISR. Les projets abordent des thématiques variées : configuration réseau, routage, services DHCP/DNS, interconnexion multi-sites, et bien d'autres à venir au fil de la formation.",
+    "technologies": ["Cisco Packet Tracer", "Réseau", "Routage", "DHCP", "DNS"],
+    "image": "assets/vignettes/packet-tracer.png",
+    "lien": "https://github.com/gcemvoutou/projets-cisco-packet-tracer"
+  },
+  
+  {
+  "id": 4,
+  "titre": "Serveur de fichiers Samba",
+  "categorie": "système",
+  "contexte": "perso",
+  "description": "Déploiement d'un serveur de fichiers Samba sous Debian 13, avec cloisonnement des accès par groupe métier, quotas disque, sauvegarde automatisée et pare-feu UFW.",
+  "description_detaillee": "Projet personnel réalisé en autodidacte pour construire, de A à Z, un serveur de fichiers d'entreprise sous Linux, en s'appuyant sur une architecture à deux machines virtuelles sous VirtualBox (serveur de production + serveur de sauvegarde séparé).\n\nCe projet système comprend :\n\n- L'installation et l'administration d'un serveur Debian 13 en ligne de commande (retrait de l'environnement graphique, configuration réseau via NetworkManager/nmcli).\n- Le déploiement de Samba avec un cloisonnement des accès par groupe métier (Direction, Compta, Technique), gestion des droits Linux et bit SetGID pour un héritage correct des permissions.\n- La mise en place de quotas disque par groupe (limites souples et strictes) pour éviter la saturation du serveur.\n- L'automatisation d'une sauvegarde chiffrée vers un second serveur (authentification SSH par clé, script Bash, planification via cron), avec des tests de robustesse (coupure réseau, dépassement de quota).\n- La sécurisation du serveur avec un pare-feu UFW, restreignant les flux Samba au seul réseau interne.",
+  "technologies": ["Debian 13", "Samba", "VirtualBox", "NetworkManager", "SSH", "rsync", "cron", "UFW", "Quotas disque"],
+  "image": "assets/vignettes/samba.png",
+  "lien": "https://github.com/gcemvoutou/serveur-fichiers-samba-linux",
+  "a_faire": "ajouter les captures sur GitHub"
+  },
+  {
+    "id": 8,
+    "titre": "Migration d'un switch",
+    "categorie": "réseau",
+    "contexte": "entreprise",
+    "description": "Remplacement du switch réseau du Centre culturel LVS, avec harmonisation de son plan de VLANs pour l'aligner sur celui du reste du parc réseau de la collectivité.",
+    "description_detaillee": "Remplacement d'un des switchs réseau de la collectivité, celui du Centre culturel LVS (cinéma municipal de la Mairie de Saint-Égrève), avec harmonisation du plan de VLANs sur l'ensemble du parc réseau.\n\nCe projet d'entreprise comprend :\n\n- Le repérage physique complet du câblage existant (52 ports) et l'analyse des VLANs en production via LibreNMS avant migration.\n- La montée en compétence autodidacte et la configuration d'un switch Aruba 2530 (accès console PuTTY, administration à distance en SSH, sécurisation par mot de passe manager).\n- La conception et l'application d'un nouveau plan de VLANs harmonisé avec le reste du parc réseau de la mairie (fusion et renumérotation de VLANs existants, création de VLANs de réserve).\n- La bascule physique et la recette réseau en environnement de production, avec une contrainte forte : aucune intervention possible pendant les horaires d'ouverture au public.",
+    "technologies": ["Aruba 2530", "VLAN", "SSH", "PuTTY", "LibreNMS", "Câblage réseau", "Supervision réseau"],
+    "image": "assets/vignettes/switch.png",
+    "lien": "https://github.com/gcemvoutou/switch_lvs_v2"
+  },
 
-Dans la section "Les Séries de Projets", quand un groupe de projets (ex. "Projets en Entreprise (Alternance)") contient moins de cartes que la grille ne peut en afficher sur une ligne complète (ex. 2 cartes sur une grille qui pourrait en accueillir 3-4), les cartes restent actuellement alignées à gauche, laissant un grand espace vide à droite. Il faut centrer ces cartes à la place.
+  {
+  "id": 9,
+  "titre": "Serveur DHCP : Redondance et Relais",
+  "categorie": "réseau",
+  "contexte": "scolaire",
+  "description": "Mise en place d'un service DHCP sous Linux (isc-dhcp-server), depuis une installation simple jusqu'à une architecture de haute disponibilité avec DHCP Failover et agent relais.",
+  "description_detaillee": "Ce projet documente la mise en place d'un service DHCP (Dynamic Host Configuration Protocol) sous Linux, depuis une installation simple jusqu'à des architectures de haute disponibilité utilisées en environnement professionnel.\n\nLe protocole DHCP permet de distribuer automatiquement aux clients d'un réseau les paramètres IP nécessaires à leur fonctionnement (adresse IP, masque de sous-réseau, passerelle, serveur DNS) pour une durée déterminée (le bail), via un échange en quatre temps : DHCPDISCOVER → DHCPOFFER → DHCPREQUEST → DHCPACK.\n\nLe TP est découpé en trois parties, chacune correspondant à un niveau de complexité et un objectif pédagogique distinct :\n\n- **Partie A** : création d'un serveur DHCP sur Raspberry Pi, avec routage NAT (partage de connexion) vers Internet.\n- **Partie B** : redondance DHCP « à plat » deux serveurs actifs sur la même plage d'adresses, mise en évidence des risques de conflit liés à l'absence de synchronisation.\n- **Partie C** : agent relais DHCP (théorie) et mise en place d'une grappe DHCP en haute disponibilité (DHCP Failover).\n\nCes trois parties sont conçues pour être lues dans l'ordre : la partie B met volontairement en évidence les limites d'une redondance DHCP non maîtrisée, ce qui justifie la mise en place du mécanisme de DHCP Failover présenté en partie C.\n\nEnvironnement technique : serveurs sous Raspberry Pi OS / Ubuntu Server, clients de test Windows 11 et Linux, virtualisation VirtualBox pour les parties B et C, synchronisation d'horloge via ntpsec pour le failover.",
+  "technologies": ["DHCP", "isc-dhcp-server", "Linux", "Raspberry Pi", "VirtualBox", "NAT", "DHCP Failover", "iptables"],
+  "image": "assets/vignettes/dhcp.png",
+  "lien": "https://github.com/gcemvoutou/Serveur-DHCP"
+}
+,
+{
+  "id": 10,
+  "titre": "Wallboard de supervision CheckMK",
+  "categorie": "système",
+  "contexte": "entreprise",
+  "description": "Transformation d'une TV inutilisée en panneau d'affichage permanent du dashboard CheckMK, sur un Dell OptiPlex sous Ubuntu Desktop, en mode kiosque 24h/24 entièrement autonome.",
+  "description_detaillee": "Dans le cadre de mon alternance à la Mairie de Saint-Égrève, transformation d'une TV inutilisée de l'espace support en panneau d'affichage permanent du dashboard de supervision CheckMK, sans aucune intervention humaine au quotidien.\n\nCe projet système et réseau comprend :\n\n- L'installation d'Ubuntu Desktop 24.04 LTS et la configuration d'un compte en connexion automatique (autologin GDM3), avec le protocole X11 forcé plutôt que Wayland pour fiabiliser la session sans surveillance.\n- Le déploiement de Chromium en mode kiosque strict (plein écran, sans barre d'adresse), supervisé par un service utilisateur systemd garantissant une relance automatique en cas de plantage (Restart=always) et une protection contre toute dérive mémoire (MemoryMax).\n- La résolution d'un blocage lié à l'inspection SSL du pare-feu d'entreprise, empêchant l'installation de Chromium via le Snap Store, par l'import d'un certificat racine dans le magasin de confiance système.\n- La configuration réseau de la machine en IP fixe, en coordination avec l'administrateur réseau.\n- La création d'un compte de supervision CheckMK dédié, restreint en lecture seule, avec une session maintenue active durablement.\n- La mise en place d'une reprise entièrement autonome après coupure de courant (AC Recovery activé au BIOS).",
+  "technologies": ["Ubuntu Desktop 24.04 LTS", "Chromium", "systemd", "GDM3", "CheckMK", "Bash", "Dell OptiPlex"],
+  "image": "assets/vignettes/wallboard.png",
+  "lien": "https://github.com/gcemvoutou/wallboard-ubuntu"
+},
 
-## Correction à appliquer
-
-1. Identifie d'abord la classe CSS du conteneur qui affiche les cartes d'un groupe (probablement un conteneur type `.projects-grid` ou une grille similaire utilisée pour chaque sous-groupe de projets par contexte). Confirme son nom exact avant de modifier quoi que ce soit.
-
-2. Si ce conteneur utilise actuellement `display: grid` avec `grid-template-columns: repeat(auto-fill, minmax(...))` ou équivalent : ce type de grille aligne toujours les éléments à gauche par défaut, il n'y a pas de solution simple pour centrer une dernière rangée incomplète avec CSS Grid seul. Remplace cette grille par une disposition en **flexbox** :
-
-```css
-.projects-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px; /* garder la valeur de gap déjà utilisée actuellement */
+{
+  "id": 11,
+    "titre": "Serveur web LAMP sur Raspberry Pi",
+    "categorie": "système",
+    "contexte": "scolaire",
+    "description": "Mise en place d'un serveur LAMP (Linux, Apache, MariaDB, PHP) sur Raspberry Pi : configuration avancée d'Apache, passage en HTTPS avec analyse Wireshark, puis administration de MariaDB.",
+    "description_detaillee": "Ce TP du BTS SIO SISR consiste à installer, configurer et sécuriser un serveur web complet sur Raspberry Pi, testé depuis un poste client Windows.\n\nLe projet couvre :\n\n- L'installation de la pile LAMP et le déploiement de phpMyAdmin et de WordPress.\n- L'analyse du protocole HTTP avec Wireshark : démonstration qu'un mot de passe envoyé par formulaire circule en clair.\n- La configuration d'Apache : nom du serveur, fichiers de logs, contrôle de l'accès aux dossiers (Options Indexes), scripts CGI en Bash.\n- La protection des accès : restriction à localhost (Require local) et authentification par fichier .htaccess / htpasswd.\n- La mise en place de serveurs virtuels (VirtualHost) avec des journaux séparés par site.\n- Le passage en HTTPS (module SSL, certificat par défaut) avec une redirection permanente 301, et la vérification du chiffrement TLS 1.3 dans Wireshark.\n- L'utilisation de MariaDB : création de base et de table, requêtes SQL, lien avec PHP (mysqli).\n- L'administration de MariaDB : gestion des utilisateurs et des droits (GRANT / REVOKE, moindre privilège), état du serveur (mysqladmin), sauvegarde et restauration avec mysqldump.",
+    "technologies": ["Apache", "MariaDB", "PHP", "HTTPS / TLS", "Wireshark", "phpMyAdmin", "Raspberry Pi"],
+    "image": "assets/vignettes/lamp.png",
+    "lien": "https://github.com/gcemvoutou/LAMP"
 }
 
-.project-card {
-  flex: 0 1 300px; /* ajuster 300px à la largeur de carte actuelle */
-}
-```
-
-3. Vérifie la largeur de carte actuelle définie dans le CSS existant (cherche la largeur utilisée dans la règle `grid-template-columns` actuelle, ex. `minmax(280px, 1fr)`) et réutilise cette même largeur comme valeur de base (`flex-basis`) pour ne pas changer la taille visuelle des cartes, seulement leur alignement.
-
-4. Applique ce changement à TOUS les groupes de la section projets (par contexte : Entreprise, Scolaire, Personnel — ou quel que soit le découpage utilisé), pas seulement au groupe "Entreprise" visible sur la capture, pour que le comportement soit cohérent partout sur la page.
-
-5. Vérifie sur mobile que le `flex-wrap: wrap` fonctionne toujours correctement et que les cartes passent bien en une seule colonne centrée sur petit écran, sans régression par rapport au comportement actuel. enleve aussi "Alternance" dans Projets en Entreprise (Alternance) et pareil enelve "Labs & Auto-hébergement" Projets Personnels (Labs & Auto-hébergement)
-
-Confirme visuellement, une fois le changement fait, que les groupes avec un nombre incomplet de cartes (2 cartes au lieu de 3-4 par exemple) apparaissent bien centrés horizontalement, et pas collés à gauche.
+]
