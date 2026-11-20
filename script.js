@@ -1,97 +1,10 @@
 // script.js - Portfolio Dynamique Clara 
 
-// Fallback de données pour s'assurer que le site fonctionne parfaitement même en local (sans serveur HTTP local)
-const PROJECTS_FALLBACK = [
-  {
-    "id": 1,
-    "titre": "Active Directory Lab",
-    "categorie": "système",
-    "contexte": "perso",
-    "description": "Déploiement complet d'un domaine Windows Server 2022 en lab virtuel. Création d'une arborescence d'UOs, configuration DNS/DHCP, mise en place de GPOs, scripts PowerShell d'automatisation et profils itinérants.",
-    "description_detaillee": "Ce projet de laboratoire m'a permis d'acquérir une compréhension approfondie de l'administration d'un parc informatique d'entreprise sous Windows Server 2022.\n\n- Déployer un contrôleur de domaine Active Directory (AD DS) et son service DNS\n- Structurer un annuaire avec des unités d'organisation (OU) et des groupes de sécurité selon le modèle AGDLP\n- Créer et administrer des comptes utilisateurs (manuellement et via PowerShell)\n- Joindre un poste client Windows 10 au domaine\n- Déployer des stratégies de groupe (GPO) : fond d'écran, restrictions, lecteur réseau\n- Configurer des profils itinérants et des répertoires personnels (lecteurs réseau)",
-    "technologies": ["Windows Server 2022", "Active Directory", "PowerShell", "VMware Workstation Pro", "DNS", "DHCP", "GPO"],
-    "image": "assets/active-directory.png",
-    "lien": "https://github.com/gcemvoutou/lab-active-directory-sisr"
-  },
-  {
-    "id": 2,
-    "titre": "BookStack sur Raspberry Pi",
-    "categorie": "infrastructure",
-    "contexte": "perso",
-    "description": "Déploiement d'un wiki auto-hébergé sur Raspberry Pi 4 avec Docker Compose. Stack : BookStack + MariaDB + Nginx Proxy Manager + Let's Encrypt SSL. Accessible via bookstack-clara.duckdns.org.",
-    "description_detaillee": "Mise en place d'une plateforme de base de connaissances (Wiki) personnelle pour centraliser mes documentations et procédures techniques.\n\nCe projet d'infrastructure comprend :\n\n- Le déploiement de la stack BookStack, MariaDB, et Nginx Proxy Manager via Docker Compose.\n\n- La configuration de Nginx Proxy Manager en tant que Reverse Proxy pour sécuriser les échanges avec un certificat SSL Let's Encrypt gratuit.\n\n- L'attribution d'un nom de domaine gratuit via le service de DNS dynamique DuckDNS.\n\n- La redirection sécurisée des ports (port forwarding) sur une box Bouygues Telecom.\n\n- La résolution d'erreurs d'initialisation de base de données (MariaDB troubleshooting) et la migration de la configuration depuis un Raspberry Pi de l'école vers un Raspberry Pi personnel en utilisant des commandes sécurisées SCP.",
-    "technologies": ["Docker", "Docker Compose", "Nginx Proxy Manager", "MariaDB", "Let's Encrypt", "DuckDNS", "Raspberry Pi"],
-    "image": "assets/bookstack.png",
-    "lien": "https://github.com/gcemvoutou/Cr-er-un-Serveur-Bookstak-sur-Raspberry-Pi-4/tree/main"
-  },
-  {
-    "id": 3,
-    "titre": "Pare-feu OPNsense",
-    "categorie": "réseau",
-    "contexte": "scolaire",
-    "description": "Installation et configuration complète d'un pare-feu OPNsense sur appliance Riverbed. Inclut la préparation (Rufus, console), l'installation (ZFS), et la sécurisation avancée (HTTPS, filtrage, NAT).",
-    "description_detaillee": "Ce projet pratique consistait à transformer une appliance réseau Riverbed en un pare-feu opérationnel via la distribution open-source OPNsense.\n\nLe projet s'est articulé autour de deux volets :\n\n- **Volet 1 : Installation et configuration initiale**\n  - Préparation d'une clé USB bootable.\n  - Accès console (PuTTY, 115200 bauds).\n  - Installation du système (ZFS, GPT/UEFI).\n  - Assignation des interfaces WAN (DHCP) et LAN (statique 192.168.6.254/24).\n\n- **Volet 2 : Sécurisation et configuration avancée**\n  - Sécurisation de l'accès à l'interface d'administration via HTTPS (certificat auto-signé).\n  - Mise en place des règles de filtrage (Firewall Rules) pour autoriser le trafic LAN vers WAN.\n  - Configuration du NAT sortant (Outbound NAT) pour permettre l'accès à internet.\n  - Vérification du trafic via les logs en temps réel (Live View).",
-    "technologies": ["OPNsense", "FreeBSD", "Riverbed", "PuTTY", "Rufus", "HTTPS", "NAT"],
-    "image": "assets/OPNsense.png",
-    "lien": "https://github.com/gcemvoutou/OPNsense_Riverbed.git"
-  },
-  {
-    "id": 6,
-    "titre": "Supervision réseau avec CheckMK",
-    "categorie": "réseau",
-    "contexte": "entreprise",
-    "description": "Supervision d'une infrastructure hétérogène de 204 hôtes répartis sur les sites distants de la Mairie de Saint-Égrève avec CheckMK Raw Edition (CRE).",
-    "description_detaillee": "CheckMK Raw Edition (CRE) est une solution de supervision réseau open source. Dans le cadre de mon alternance à la Mairie de Saint-Égrève, j'ai été chargée de centraliser et piloter la supervision d'une infrastructure hétérogène répartie sur de nombreux sites distants (Hôtel de Ville, écoles, gymnases, services techniques) afin de :\n\n- Garantir la continuité du service public\n- Anticiper les pannes matérielles ou réseau\n- Fiabiliser l'inventaire des équipements supervisés\n\nÀ ce jour, 204 hôtes sont enregistrés dans la solution, un chiffre amène à évoluer au fil des mises en production et des retraits de matériel.",
-    "technologies": ["CheckMK", "CRE", "Linux", "Supervision", "Réseau"],
-    "image": "assets/Checkmk.png",
-    "lien": "https://github.com/gcemvoutou/Checkmk-supervision-mairie"
-  },
-  {
-    "id": 7,
-    "titre": "Projets Cisco Packet Tracer",
-    "categorie": "réseau",
-    "contexte": "scolaire",
-    "description": "Ensemble de travaux pratiques réseau (routage, DHCP, DNS, interconnexion multi-sites) réalisés sous Cisco Packet Tracer dans le cadre du BTS SIO SISR.",
-    "description_detaillee": "Ensemble de travaux pratiques réalisés en autonomie sous Cisco Packet Tracer dans le cadre de ma formation BTS SIO SISR. Les projets abordent des thématiques variées : configuration réseau, routage, services DHCP/DNS, interconnexion multi-sites, et bien d'autres à venir au fil de la formation.",
-    "technologies": ["Cisco Packet Tracer", "Réseau", "Routage", "DHCP", "DNS"],
-    "image": "assets/cisco.png",
-    "lien": "https://github.com/gcemvoutou/projets-cisco-packet-tracer"
-  },
-  {
-    "id": 4,
-    "titre": "Portfolio Web (ce site)",
-    "categorie": "dev",
-    "contexte": "perso",
-    "description": "Portfolio professionnel statique à l'interface moderne, immersive et épurée (Dark Mode avec accent bleu électrique). Développé en HTML/CSS/JS et propulsé par Gemini CLI.",
-    "description_detaillee": "Conception et développement de mon site vitrine personnel. Pour donner une touche résolument informatique et orientée technologie, le site propose une interface moderne, immersive et épurée (Dark Mode avec accent bleu électrique).\n\nFonctionnalités clés :\n- Interface moderne 100% responsive avec animations fluides.\n- Menu de navigation dynamique (changement d'opacité au défilement).\n- Chargement asynchrone des projets à partir d'un fichier JSON local.\n- Filtrage dynamique des projets sans rechargement de page (via JavaScript).\n- Système de modale de détails interactif ('More Info') pour chaque projet.\n- Formulaire de contact sécurisé connecté à EmailJS pour recevoir directement les messages par e-mail.\n- Hébergement et déploiement continu sur Netlify.",
-    "technologies": ["HTML", "CSS", "JavaScript", "JSON", "Gemini CLI", "Netlify"],
-    "lien": "#"
-  },
-  {
-    "id": 5,
-    "titre": "Pi-hole",
-    "categorie": "réseau",
-    "contexte": "perso",
-    "description": "Installation d'un serveur DNS avec filtrage publicitaire sur Raspberry Pi. Mode DNS uniquement (sans prise en charge du DHCP). Projet planifié.",
-    "description_detaillee": "Projet à venir visant à améliorer la sécurité et la vitesse de navigation au sein de mon réseau domestique en déployant un serveur de blocage de publicité et de traceurs réseau au niveau DNS (trou noir DNS).\n\nL'objectif sera de :\n- Installer Pi-hole sur un Raspberry Pi.\n- Configurer le serveur DNS local de manière autonome sans activer le serveur DHCP de Pi-hole (pour conserver le DHCP existant de la box).\n- Créer des listes de blocage personnalisées (adlists) pour filtrer les publicités et les sites malveillants à la source pour l'ensemble des appareils connectés.",
-    "technologies": ["Pi-hole", "Raspberry Pi", "DNS"],
-    "lien": "#",
-    "statut": "a_venir"
-  },
-  {
-    "id": 8,
-    "titre": "Configuration d'un switch",
-    "categorie": "réseau",
-    "contexte": "entreprise",
-    "description": "Remplacement du switch réseau du Centre culturel LVS, avec harmonisation de son plan de VLANs pour l'aligner sur celui du reste du parc réseau de la collectivité.",
-    "description_detaillee": "Remplacement d'un des switchs réseau de la collectivité, celui du Centre culturel LVS (cinéma municipal de la Mairie de Saint-Égrève), avec harmonisation du plan de VLANs sur l'ensemble du parc réseau.\n\nCe projet d'entreprise comprend :\n\n- Le repérage physique complet du câblage existant (52 ports) et l'analyse des VLANs en production via LibreNMS avant migration.\n- La montée en compétence autodidacte et la configuration d'un switch Aruba 2530 (accès console PuTTY, administration à distance en SSH, sécurisation par mot de passe manager).\n- La conception et l'application d'un nouveau plan de VLANs harmonisé avec le reste du parc réseau de la mairie (fusion et renumérotation de VLANs existants, création de VLANs de réserve).\n- La bascule physique et la recette réseau en environnement de production, avec une contrainte forte : aucune intervention possible pendant les horaires d'ouverture au public.",
-    "technologies": ["Aruba 2530", "VLAN", "SSH", "PuTTY", "LibreNMS", "Câblage réseau", "Supervision réseau"],
-    "image": "assets/switch_migration.png",
-    "lien": "https://github.com/gcemvoutou/migration-switch-reseau.git"
-  }
-];
-
+// Données des projets, chargées depuis projects.json
 let projectsData = [];
+
+// Notes « À compléter » : visibles uniquement en local (localhost ou fichier), jamais sur le site en ligne
+const IS_LOCAL = ['localhost', '127.0.0.1', ''].includes(window.location.hostname);
 
 document.addEventListener('DOMContentLoaded', () => {
   // Initialisation de la navbar au scroll
@@ -135,8 +48,10 @@ function initMobileMenu() {
   const navLinks = document.querySelector('.nav-links');
   
   burgerMenu.addEventListener('click', () => {
-    burgerMenu.classList.toggle('active');
+    const isOpen = burgerMenu.classList.toggle('active');
     navLinks.classList.toggle('active');
+    burgerMenu.setAttribute('aria-expanded', isOpen);
+    burgerMenu.setAttribute('aria-label', isOpen ? 'Fermer le menu de navigation' : 'Ouvrir le menu de navigation');
   });
 
   // Ferme le menu mobile quand on clique sur un lien
@@ -144,6 +59,8 @@ function initMobileMenu() {
     link.addEventListener('click', () => {
       burgerMenu.classList.remove('active');
       navLinks.classList.remove('active');
+      burgerMenu.setAttribute('aria-expanded', 'false');
+      burgerMenu.setAttribute('aria-label', 'Ouvrir le menu de navigation');
     });
   });
 }
@@ -178,8 +95,10 @@ async function loadProjects() {
     }
     projectsData = await response.json();
   } catch (error) {
-    console.warn("Utilisation du fallback local pour les projets :", error);
-    projectsData = PROJECTS_FALLBACK;
+    console.error("Chargement des projets impossible :", error);
+    document.querySelector('.projects-grid').innerHTML =
+      `<div class="no-projects">Les projets n'ont pas pu être chargés. Merci de réessayer dans quelques instants.</div>`;
+    return;
   }
   
   // Afficher les projets initiaux (Tous)
@@ -279,11 +198,11 @@ function renderProjects(projectsToRender) {
         </div>
         <div class="card-info">
           <div class="card-actions">
-            <button class="action-btn play-btn" onclick="openProjectModal(${project.id})" title="Plus d'informations">
+            <button class="action-btn play-btn" onclick="openProjectModal(${project.id})" title="Plus d'informations" aria-label="Plus d'informations sur le projet ${project.titre}">
               <i class="fa-solid fa-play"></i>
             </button>
             ${(project.lien !== '#' && project.statut !== 'a_venir') ? `
-              <a href="${project.lien}" target="_blank" class="action-btn link-btn" title="Voir le code">
+              <a href="${project.lien}" target="_blank" rel="noopener" class="action-btn link-btn" title="Voir le projet sur GitHub" aria-label="Voir le projet ${project.titre} sur GitHub">
                 <i class="fa-brands fa-github"></i>
               </a>
             ` : ''}
@@ -293,6 +212,7 @@ function renderProjects(projectsToRender) {
             ${project.statut === 'a_venir' ? `<span class="status-badge" style="background-color: rgba(128, 128, 128, 0.15); color: #aaaaaa; border: 1px solid rgba(128, 128, 128, 0.3);">À venir</span>` : ''}
             <span class="project-category category-${catSlug}">${project.categorie.toUpperCase()}</span>
           </div>
+          ${(project.a_faire && IS_LOCAL) ? `<div class="todo-note" style="font-size: 0.75rem; font-weight: 600; color: #ffa726; background: rgba(255, 167, 38, 0.12); border: 1px solid rgba(255, 167, 38, 0.4); border-radius: 4px; padding: 4px 8px;"><i class="fa-solid fa-triangle-exclamation"></i> À compléter : ${project.a_faire}</div>` : ''}
           <p class="project-excerpt">${project.description}</p>
           <div class="project-techs">${techSpanList}</div>
         </div>
@@ -445,7 +365,11 @@ window.onclick = function(event) {
 // ==================================================
 
 // Clé publique EmailJS - sans risque à exposer côté client (faite pour ça)
-emailjs.init('DcFh8IKc1fnIFAjHn');
+if (typeof emailjs !== 'undefined') {
+  emailjs.init('DcFh8IKc1fnIFAjHn');
+} else {
+  console.warn('EmailJS n\'a pas pu être chargé (CDN indisponible ou bloqué) — le formulaire de contact sera désactivé, mais le reste du site continue de fonctionner normalement.');
+}
 
 const EMAILJS_SERVICE_ID = 'service_w3vyoef';
 const EMAILJS_TEMPLATE_ID = 'template_3wdf9mm';
@@ -466,6 +390,9 @@ if (contactForm) {
     statusBox.className = 'form-status';
 
     try {
+      if (typeof emailjs === 'undefined') {
+        throw new Error('EmailJS non chargé');
+      }
       await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, contactForm);
 
       statusBox.classList.add('success');
@@ -500,12 +427,17 @@ const SKILLS_DATA = [
       {
         name: "Linux (Debian / Ubuntu)",
         icon: "fa-brands fa-linux",
-        tags: ["Administration CLI", "SSH", "Services", "Bash", "Configuration système"]
+        tags: ["Administration CLI", "SSH", "Services systemd", "Bash", "Configuration système"]
       },
       {
         name: "Virtualisation",
         icon: "fa-solid fa-cubes",
-        tags: ["VirtualBox", "VMware Workstation Pro"]
+        tags: ["Proxmox VE", "Conteneurs LXC", "Hyper-V", "VirtualBox"]
+      },
+      {
+        name: "Services web & bases de données",
+        icon: "fa-solid fa-database",
+        tags: ["Apache", "Nginx", "HTTPS / TLS", "MariaDB", "PostgreSQL"]
       },
       {
         name: "Support utilisateurs / ITSM",
@@ -521,12 +453,17 @@ const SKILLS_DATA = [
       {
         name: "Routage & Commutation",
         icon: "fa-solid fa-network-wired",
-        tags: ["VLAN", "Adressage IP", "Switches", "Routage"]
+        tags: ["VLAN", "Adressage IP", "Switchs Aruba", "Routage"]
       },
       {
-        name: "Supervision réseau",
+        name: "IPAM / DCIM",
+        icon: "fa-solid fa-sitemap",
+        tags: ["NetBox", "Gestion des adresses IP", "Inventaire du parc", "Modélisation de baies en 2D"]
+      },
+      {
+        name: "Supervision & analyse réseau",
         icon: "fa-solid fa-eye",
-        tags: ["CheckMK", "SNMP", "Monitoring", "Analyse d'alertes"]
+        tags: ["CheckMK", "LibreNMS", "SNMP", "Wireshark", "Analyse d'alertes"]
       },
       {
         name: "Firewall OPNsense",
@@ -536,7 +473,7 @@ const SKILLS_DATA = [
       {
         name: "Sécurité active",
         icon: "fa-solid fa-lock",
-        tags: ["Analyse alertes", "Détection comptes compromis", "Cyberassurance"]
+        tags: ["Détection comptes compromis"]
       }
     ]
   }
@@ -546,45 +483,29 @@ function renderSkillsTree() {
   const container = document.getElementById('skills-tree');
   if (!container) return;
 
+  // Catégories dépliables (ouvertes par défaut), sous-thèmes affichés en lignes compactes
   container.innerHTML = SKILLS_DATA.map((cat, catIdx) => {
     const catId = `cat-${catIdx}`;
     return `
       <div class="tree-category-wrapper">
-        <button class="tree-category-btn" aria-expanded="false" aria-controls="${catId}-content" id="${catId}-btn">
+        <button class="tree-category-btn" aria-expanded="true" aria-controls="${catId}-content" id="${catId}-btn">
           <span class="tree-title-wrapper">
             <i class="fa-solid ${cat.icon} tree-icon"></i>
             <span class="tree-category-name">${cat.category}</span>
           </span>
           <i class="fa-solid fa-chevron-right tree-chevron"></i>
         </button>
-        <div id="${catId}-content" class="tree-category-content" role="region" aria-labelledby="${catId}-btn">
+        <div id="${catId}-content" class="tree-category-content open" role="region" aria-labelledby="${catId}-btn">
           <div class="tree-category-inner-wrapper">
-            <div class="tree-category-inner">
-              ${cat.subthemes.map((sub, subIdx) => {
-                const subId = `sub-${catIdx}-${subIdx}`;
-                return `
-                  <div class="tree-subtheme-wrapper">
-                    <button class="tree-subtheme-btn" aria-expanded="false" aria-controls="${subId}-content" id="${subId}-btn">
-                      <span class="tree-title-wrapper">
-                        <i class="${sub.icon} tree-icon-sub"></i>
-                        <span class="tree-subtheme-name">${sub.name}</span>
-                      </span>
-                      <i class="fa-solid fa-chevron-right tree-chevron-sub"></i>
-                    </button>
-                    <div id="${subId}-content" class="tree-subtheme-content" role="region" aria-labelledby="${subId}-btn">
-                      <div class="tree-subtheme-inner-wrapper">
-                        <div class="tree-subtheme-inner">
-                          <div class="skill-tags">
-                            ${sub.tags.map((tag, tagIdx) => `
-                              <span class="staggered-tag" style="--stagger-delay: ${tagIdx * 50}ms">${tag}</span>
-                            `).join('')}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+            <div class="skill-rows">
+              ${cat.subthemes.map(sub => `
+                <div class="skill-row">
+                  <span class="skill-row-title"><i class="${sub.icon}"></i> ${sub.name}</span>
+                  <div class="skill-tags">
+                    ${sub.tags.map(tag => `<span class="staggered-tag">${tag}</span>`).join('')}
                   </div>
-                `;
-              }).join('')}
+                </div>
+              `).join('')}
             </div>
           </div>
         </div>
@@ -592,25 +513,66 @@ function renderSkillsTree() {
     `;
   }).join('');
 
-  // Attach event listeners for category expand
-  const categoryBtns = container.querySelectorAll('.tree-category-btn');
-  categoryBtns.forEach(btn => {
+  container.querySelectorAll('.tree-category-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const isExpanded = btn.getAttribute('aria-expanded') === 'true';
       btn.setAttribute('aria-expanded', !isExpanded);
-      const content = btn.nextElementSibling;
-      content.classList.toggle('open');
-    });
-  });
-
-  // Attach event listeners for subtheme expand
-  const subthemeBtns = container.querySelectorAll('.tree-subtheme-btn');
-  subthemeBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const isExpanded = btn.getAttribute('aria-expanded') === 'true';
-      btn.setAttribute('aria-expanded', !isExpanded);
-      const content = btn.nextElementSibling;
-      content.classList.toggle('open');
+      btn.nextElementSibling.classList.toggle('open');
     });
   });
 }
+
+// ==================================================
+// TERMINAL ANIMÉ (ACCUEIL)
+// ==================================================
+const TERMINAL_LINES = [
+  { cmd: 'whoami' },
+  { out: 'clara.emvoutou' },
+  { cmd: 'cat profil.txt' },
+  { out: 'Formation  : BTS SIO option SISR — 2e année' },
+  { out: 'Alternance : DSI, Mairie de Saint-Égrève' },
+  { out: "Objectif   : cycle ingénieur en alternance — 2027" },
+  { cmd: 'ls projets/entreprise/' },
+  { out: 'netbox-ipam  checkmk  wallboard  switch-aruba' }
+];
+
+function initHeroTerminal() {
+  const body = document.getElementById('terminal-body');
+  if (!body) return;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const prompt = '<span class="term-prompt">clara@portfolio:~$</span> ';
+
+  const finish = () => {
+    body.insertAdjacentHTML('beforeend', `<div>${prompt}<span class="term-cursor">█</span></div>`);
+  };
+
+  if (reduceMotion) {
+    body.innerHTML = TERMINAL_LINES.map(l => l.cmd ? `<div>${prompt}${l.cmd}</div>` : `<div class="term-out">${l.out}</div>`).join('');
+    finish();
+    return;
+  }
+
+  let i = 0;
+  const next = () => {
+    if (i >= TERMINAL_LINES.length) { finish(); return; }
+    const line = TERMINAL_LINES[i++];
+    if (line.out) {
+      body.insertAdjacentHTML('beforeend', `<div class="term-out">${line.out}</div>`);
+      setTimeout(next, 180);
+      return;
+    }
+    const row = document.createElement('div');
+    row.innerHTML = prompt + '<span class="term-typed"></span><span class="term-cursor">█</span>';
+    body.appendChild(row);
+    const typed = row.querySelector('.term-typed');
+    let c = 0;
+    const type = () => {
+      if (c < line.cmd.length) { typed.textContent += line.cmd[c++]; setTimeout(type, 55); }
+      else { row.querySelector('.term-cursor').remove(); setTimeout(next, 350); }
+    };
+    setTimeout(type, 400);
+  };
+  next();
+}
+
+document.addEventListener('DOMContentLoaded', initHeroTerminal);
